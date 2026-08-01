@@ -11,9 +11,66 @@
         .btn-add { background: #FFD700; color: #000; border: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
         #cart { background: #222; margin: 20px; padding: 15px; border-radius: 10px; border: 2px solid #FFD700; position: sticky; bottom: 10px; }
         .whatsapp-btn { display: block; text-align: center; background-color: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+    <!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZERIA SMILE | Commande</title>
+    <style>
+        :root { --gold: #FFD700; --dark: #121212; --card: #1e1e1e; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #000; color: #fff; margin: 0; padding-bottom: 150px; }
+        header { background: linear-gradient(135deg, #333, #000); padding: 40px 20px; text-align: center; border-bottom: 4px solid var(--gold); }
+        h1 { color: var(--gold); margin: 0; text-transform: uppercase; letter-spacing: 2px; }
+        .cat { color: var(--gold); font-size: 1.3em; margin: 30px 15px 15px; border-left: 5px solid var(--gold); padding-left: 15px; font-weight: bold; text-transform: uppercase; }
+        .grid { display: grid; gap: 10px; padding: 0 15px; }
+        .item { background: var(--card); padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #333; }
+        .info { flex-grow: 1; }
+        .name { font-weight: bold; font-size: 1.1em; display: block; }
+        .prices { font-size: 0.85em; color: #ccc; margin-top: 5px; }
+        .btn-add { background: var(--gold); color: #000; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .btn-add:active { transform: scale(0.95); }
+        #cart { background: #1a1a1a; margin: 20px; padding: 20px; border-radius: 15px; border: 2px solid var(--gold); position: sticky; bottom: 10px; box-shadow: 0 0 20px rgba(255,215,0,0.1); }
+        .whatsapp-btn { display: block; text-align: center; background-color: #25D366; color: white; padding: 18px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 15px; transition: 0.3s; }
+        .whatsapp-btn:hover { background-color: #128c7e; }
     </style>
 </head>
 <body>
+
+    <header><h1>PIZZERIA SMILE</h1></header>
+
+    <div class="cat">PIZZAS</div>
+    <div class="grid">
+        <div class="item"><div class="info"><span class="name">Margherita</span><span class="prices">M:250 | L:500 | XL:1000</span></div><button class="btn-add" onclick="add('Pizza Margherita')">Ajouter</button></div>
+        <div class="item"><div class="info"><span class="name">Royale</span><span class="prices">M:350 | L:700 | XL:1300</span></div><button class="btn-add" onclick="add('Pizza Royale')">Ajouter</button></div>
+        <div class="item"><div class="info"><span class="name">Smile</span><span class="prices">M:800 | L:1600 | XL:2600</span></div><button class="btn-add" onclick="add('Pizza Smile')">Ajouter</button></div>
+    </div>
+
+    <div class="cat">SANDWICHS</div>
+    <div class="grid">
+        <div class="item"><div class="info"><span class="name">Chawarma</span><span class="prices">Prix: 350</span></div><button class="btn-add" onclick="add('Sandwich Chawarma')">Ajouter</button></div>
+        <div class="item"><div class="info"><span class="name">Escalope à la crème</span><span class="prices">Prix: 450</span></div><button class="btn-add" onclick="add('Sandwich Escalope')">Ajouter</button></div>
+    </div>
+
+    <!-- يمكنك إضافة باقي الأصناف بنفس هذا التنسيق -->
+
+    <div id="cart">
+        <h3>🛒 Votre Commande</h3>
+        <ul id="cart-list" style="padding-left: 20px;"><li>Panier vide</li></ul>
+        <a href="#" id="order-link" class="whatsapp-btn">Commander sur WhatsApp</a>
+    </div>
+
+    <script>
+        let cart = [];
+        function add(item) {
+            cart.push(item);
+            document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i}</li>`).join('');
+            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.join(', ');
+        }
+    </script>
+</body>
+</html>
+
     <header><h1>🍕 PIZZERIA SMILE</h1></header>
 
     <div class="cat">PIZZAS</div>

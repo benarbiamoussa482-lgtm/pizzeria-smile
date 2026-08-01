@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZERIA SMILE</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #000000; color: #ffffff; margin: 0; padding: 0; }
+        header { background-color: #FFD700; color: #000000; padding: 25px 20px; text-align: center; border-bottom: 3px solid #ffffff; }
+        h1 { margin: 0; font-size: 2.5em; font-weight: bold; }
+        header p { margin: 10px 0 0 0; font-size: 1.2em; font-weight: bold; }
+        .menu-section { padding: 20px; max-width: 800px; margin: auto; }
+        .menu-title { color: #FFD700; text-align: center; font-size: 2em; border-bottom: 2px dashed #FFD700; padding-bottom: 10px; margin-bottom: 20px; }
+        .menu-item { background-color: #1a1a1a; border: 1px solid #FFD700; padding: 15px; margin-bottom: 15px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .menu-item-info h3 { margin: 0 0 8px 0; color: #FFD700; font-size: 1.3em; }
+        .menu-item-info p { margin: 0; color: #cccccc; font-size: 0.9em; }
+        .add-btn { background-color: #FFD700; color: #000000; border: none; padding: 10px 15px; border-radius: 8px; font-weight: bold; font-size: 1em; cursor: pointer; }
+        .cart-section { background-color: #111111; padding: 20px; max-width: 800px; margin: 20px auto; border-radius: 10px; border: 2px solid #ffffff; }
+        .cart-section h2 { color: #FFD700; margin-top: 0; }
+        #cart-items { list-style-type: none; padding: 0; }
+        #cart-items li { background-color: #222; margin-bottom: 5px; padding: 10px; border-radius: 5px; border-right: 4px solid #FFD700; }
+        .contact-section { text-align: center; padding: 30px 20px; background-color: #0a0a0a; border-top: 2px solid #333; }
+        .contact-section h2 { color: #ffffff; }
+        .phone-numbers { margin: 20px 0; font-size: 1.3em; color: #FFD700; font-weight: bold; }
+        .phone-numbers p { margin: 10px 0; }
+        .whatsapp-btn { display: inline-block; background-color: #25D366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 1.2em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🍕 PIZZERIA SMILE 🍕</h1>
+        <p>الطعم الأصلي للبيتزا والمأكولات السريعة</p>
+    </header>
+    <div class="menu-section">
+        <h2 class="menu-title">قائمة الطعام</h2>
+        <div class="menu-item">
+            <div class="menu-item-info">
+                <h3>بيتزا متنوعة 🍕</h3>
+                <p>تشكيلة من أشهى أنواع البيتزا الطازجة</p>
+            </div>
+            <button class="add-btn" onclick="addToCart('بيتزا')">إضافة 🛒</button>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-info">
+                <h3>ساندويتشات 🥪</h3>
+                <p>ساندويتشات محشوة ولذيذة</p>
+            </div>
+            <button class="add-btn" onclick="addToCart('ساندويتش')">إضافة 🛒</button>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-info">
+                <h3>برغر 🍔</h3>
+                <p>برغر بخبز طازج ولحم ممتاز</p>
+            </div>
+            <button class="add-btn" onclick="addToCart('برغر')">إضافة 🛒</button>
+        </div>
+        <div class="menu-item">
+            <div class="menu-item-info">
+                <h3>تاكوس 🌮</h3>
+                <p>تاكوس غني بصلصة الجبن واللحوم</p>
+            </div>
+            <button class="add-btn" onclick="addToCart('تاكوس')">إضافة 🛒</button>
+        </div>
+    </div>
+    <div class="cart-section">
+        <h2>سلة طلباتك 🛒</h2>
+        <ul id="cart-items">
+            <li style="border-right: none; text-align: center; color: #888;">السلة فارغة حالياً</li>
+        </ul>
+    </div>
+    <div class="contact-section">
+        <h2>للطلب والتوصيل السريع 🛵</h2>
+        <div class="phone-numbers">
+            <p>📞 0775077197</p>
+            <p>📞 0549290971</p>
+        </div>
+        <a href="https://wa.me/213775077197" class="whatsapp-btn" target="_blank">💬 تواصل معنا عبر واتساب</a>
+    </div>
+    <script>
+        let cart = [];
+        function addToCart(item) {
+            cart.push(item);
+            updateCart();
+            alert("✅ تم إضافة " + item + " إلى سلة طلباتك!");
+        }
+        function updateCart() {
+            let cartList = document.getElementById('cart-items');
+            cartList.innerHTML = '';
+            if (cart.length === 0) {
+                cartList.innerHTML = '<li style="border-right: none; text-align: center; color: #888;">السلة فارغة حالياً</li>';
+            } else {
+                cart.forEach(function(item) {
+                    let li = document.createElement('li');
+                    li.textContent = "✔ " + item;
+                    cartList.appendChild(li);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

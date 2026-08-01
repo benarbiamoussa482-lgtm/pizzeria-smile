@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>PIZZERIA SMILE - Menu Complet</title>
+    <title>PIZZERIA SMILE - Menu</title>
     <style>
         body { font-family: sans-serif; background-color: #000; color: #fff; padding-bottom: 120px; }
         header { background-color: #FFD700; color: #000; padding: 20px; text-align: center; }
@@ -17,28 +18,19 @@
     <header><h1>🍕 PIZZERIA SMILE</h1></header>
 
     <div class="cat">PIZZAS</div>
-    <div class="item"><span>Margherita (M:250, L:500, XL:1000)</span><button class="btn-add" onclick="add('Margherita')">+</button></div>
-    <div class="item"><span>Royale (M:350, L:700, XL:1300)</span><button class="btn-add" onclick="add('Royale')">+</button></div>
-    <div class="item"><span>4 Saisons (M:700, L:1400, XL:2400)</span><button class="btn-add" onclick="add('4 Saisons')">+</button></div>
-    <div class="item"><span>Smile (M:800, L:1600, XL:2600)</span><button class="btn-add" onclick="add('Smile')">+</button></div>
-    <div class="item"><span>Végétarien (M:500, L:1000, XL:1900)</span><button class="btn-add" onclick="add('Végétarien')">+</button></div>
-    <div class="item"><span>Crevette (M:1000, L:2000)</span><button class="btn-add" onclick="add('Crevette')">+</button></div>
+    <div class="item"><span>Margherita</span><button class="btn-add" onclick="add('Margherita')">+</button></div>
+    <div class="item"><span>Royale</span><button class="btn-add" onclick="add('Royale')">+</button></div>
+    <div class="item"><span>4 Saisons</span><button class="btn-add" onclick="add('4 Saisons')">+</button></div>
+    <div class="item"><span>Smile</span><button class="btn-add" onclick="add('Smile')">+</button></div>
 
     <div class="cat">SANDWICHS</div>
-    <div class="item"><span>Poulet Haché (200)</span><button class="btn-add" onclick="add('Poulet Haché')">+</button></div>
-    <div class="item"><span>Chawarma (350)</span><button class="btn-add" onclick="add('Chawarma')">+</button></div>
-    <div class="item"><span>Escalope à la crème (450)</span><button class="btn-add" onclick="add('Escalope')">+</button></div>
-    <div class="item"><span>Crispy (550)</span><button class="btn-add" onclick="add('Crispy')">+</button></div>
+    <div class="item"><span>Poulet Haché</span><button class="btn-add" onclick="add('Poulet Haché')">+</button></div>
+    <div class="item"><span>Chawarma</span><button class="btn-add" onclick="add('Chawarma')">+</button></div>
+    <div class="item"><span>Crispy</span><button class="btn-add" onclick="add('Crispy')">+</button></div>
 
     <div class="cat">TACOS</div>
-    <div class="item"><span>Tacos Poulet (M:500, L:650)</span><button class="btn-add" onclick="add('Tacos Poulet')">+</button></div>
-    <div class="item"><span>Tacos Mixte (M:650, L:800)</span><button class="btn-add" onclick="add('Tacos Mixte')">+</button></div>
-    <div class="item"><span>Tacos Crispé (M:650, L:800)</span><button class="btn-add" onclick="add('Tacos Crispé')">+</button></div>
-
-    <div class="cat">BURGER & GRATIN</div>
-    <div class="item"><span>Cheese Burger (350)</span><button class="btn-add" onclick="add('Cheese Burger')">+</button></div>
-    <div class="item"><span>Gratin Viande (600)</span><button class="btn-add" onclick="add('Gratin Viande')">+</button></div>
-    <div class="item"><span>Poutine Mixte (800)</span><button class="btn-add" onclick="add('Poutine Mixte')">+</button></div>
+    <div class="item"><span>Tacos Poulet</span><button class="btn-add" onclick="add('Tacos Poulet')">+</button></div>
+    <div class="item"><span>Tacos Mixte</span><button class="btn-add" onclick="add('Tacos Mixte')">+</button></div>
 
     <div id="cart">
         <h3>Votre Commande 🛒</h3>
@@ -51,7 +43,7 @@
         function add(item) {
             cart.push(item);
             document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i}</li>`).join('');
-            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.join(', ');
+            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Bonjour, je voudrais commander: " + cart.join(', ');
         }
     </script>
 </body>

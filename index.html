@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>PIZZERIA SMILE - Menu</title>
+    <title>PIZZERIA SMILE - Menu Complet</title>
     <style>
-        body { font-family: sans-serif; background-color: #000; color: #fff; padding-bottom: 120px; }
+        body { font-family: sans-serif; background-color: #000; color: #fff; margin: 0; padding-bottom: 160px; }
         header { background-color: #FFD700; color: #000; padding: 20px; text-align: center; }
-        .cat { color: #FFD700; font-size: 1.3em; font-weight: bold; margin: 20px 10px; border-bottom: 2px solid #FFD700; }
-        .item { background: #1a1a1a; margin: 5px 10px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .btn-add { background: #FFD700; color: #000; border: none; padding: 5px 12px; border-radius: 5px; font-weight: bold; }
-        #cart { background: #222; margin: 20px; padding: 15px; border-radius: 10px; border: 1px solid #FFD700; position: sticky; bottom: 10px; }
+        .cat { color: #FFD700; font-size: 1.4em; font-weight: bold; margin: 25px 15px 10px; border-bottom: 3px solid #FFD700; }
+        .item { background: #1a1a1a; margin: 6px 15px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-add { background: #FFD700; color: #000; border: none; padding: 5px 10px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        #cart { background: #222; margin: 20px; padding: 15px; border-radius: 10px; border: 2px solid #FFD700; position: sticky; bottom: 10px; }
         .whatsapp-btn { display: block; text-align: center; background-color: #25D366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 10px; }
     </style>
 </head>
@@ -18,19 +17,68 @@
     <header><h1>🍕 PIZZERIA SMILE</h1></header>
 
     <div class="cat">PIZZAS</div>
-    <div class="item"><span>Margherita</span><button class="btn-add" onclick="add('Margherita')">+</button></div>
-    <div class="item"><span>Royale</span><button class="btn-add" onclick="add('Royale')">+</button></div>
-    <div class="item"><span>4 Saisons</span><button class="btn-add" onclick="add('4 Saisons')">+</button></div>
-    <div class="item"><span>Smile</span><button class="btn-add" onclick="add('Smile')">+</button></div>
+    <div class="item"><span>Margherita (250/500/1000)</span><button class="btn-add" onclick="add('Pizza Margherita')">+</button></div>
+    <div class="item"><span>Royale (350/700/1300)</span><button class="btn-add" onclick="add('Pizza Royale')">+</button></div>
+    <div class="item"><span>Viande (400/800/1500)</span><button class="btn-add" onclick="add('Pizza Viande')">+</button></div>
+    <div class="item"><span>Poulet (450/900/1800)</span><button class="btn-add" onclick="add('Pizza Poulet')">+</button></div>
+    <div class="item"><span>Sicilienne (500/1000/1900)</span><button class="btn-add" onclick="add('Pizza Sicilienne')">+</button></div>
+    <div class="item"><span>Végétarien (500/1000/1900)</span><button class="btn-add" onclick="add('Pizza Végétarien')">+</button></div>
+    <div class="item"><span>Napolienne (550/1100/2100)</span><button class="btn-add" onclick="add('Pizza Napolienne')">+</button></div>
+    <div class="item"><span>Romaine (600/1200/2200)</span><button class="btn-add" onclick="add('Pizza Romaine')">+</button></div>
+    <div class="item"><span>Boisé (650/1300/2300)</span><button class="btn-add" onclick="add('Pizza Boisé')">+</button></div>
+    <div class="item"><span>4 Saisons (700/1400/2400)</span><button class="btn-add" onclick="add('Pizza 4 Saisons')">+</button></div>
+    <div class="item"><span>4 Fromages (700/1400/2400)</span><button class="btn-add" onclick="add('Pizza 4 Fromages')">+</button></div>
+    <div class="item"><span>Campioné (650/1300/2400)</span><button class="btn-add" onclick="add('Pizza Campioné')">+</button></div>
+    <div class="item"><span>Chef (700/1400/2500)</span><button class="btn-add" onclick="add('Pizza Chef')">+</button></div>
+    <div class="item"><span>Fumée (700/1400/2600)</span><button class="btn-add" onclick="add('Pizza Fumée')">+</button></div>
+    <div class="item"><span>Smile (800/1600/2600)</span><button class="btn-add" onclick="add('Pizza Smile')">+</button></div>
+    <div class="item"><span>Couvert (800/1600)</span><button class="btn-add" onclick="add('Pizza Couvert')">+</button></div>
+    <div class="item"><span>Venesia (900/1800)</span><button class="btn-add" onclick="add('Pizza Venesia')">+</button></div>
+    <div class="item"><span>Capriccioza (1000/1900)</span><button class="btn-add" onclick="add('Pizza Capriccioza')">+</button></div>
+    <div class="item"><span>Crevette (1000/2000)</span><button class="btn-add" onclick="add('Pizza Crevette')">+</button></div>
 
     <div class="cat">SANDWICHS</div>
-    <div class="item"><span>Poulet Haché</span><button class="btn-add" onclick="add('Poulet Haché')">+</button></div>
-    <div class="item"><span>Chawarma</span><button class="btn-add" onclick="add('Chawarma')">+</button></div>
-    <div class="item"><span>Crispy</span><button class="btn-add" onclick="add('Crispy')">+</button></div>
+    <div class="item"><span>Poulet hachée (200)</span><button class="btn-add" onclick="add('Poulet hachée')">+</button></div>
+    <div class="item"><span>Spécial (250)</span><button class="btn-add" onclick="add('Spécial')">+</button></div>
+    <div class="item"><span>Spécial Doublé (350)</span><button class="btn-add" onclick="add('Spécial Doublé')">+</button></div>
+    <div class="item"><span>Chawarma (350)</span><button class="btn-add" onclick="add('Chawarma')">+</button></div>
+    <div class="item"><span>Mariné (350)</span><button class="btn-add" onclick="add('Mariné')">+</button></div>
+    <div class="item"><span>Viande Haché (350)</span><button class="btn-add" onclick="add('Viande Haché')">+</button></div>
+    <div class="item"><span>Libané (400)</span><button class="btn-add" onclick="add('Libané')">+</button></div>
+    <div class="item"><span>Kebda (400)</span><button class="btn-add" onclick="add('Kebda')">+</button></div>
+    <div class="item"><span>Escalope à la crème (450)</span><button class="btn-add" onclick="add('Escalope à la crème')">+</button></div>
+    <div class="item"><span>Mexicain (450)</span><button class="btn-add" onclick="add('Mexicain')">+</button></div>
+    <div class="item"><span>Smile (450)</span><button class="btn-add" onclick="add('Sandwich Smile')">+</button></div>
+    <div class="item"><span>Crispy (550)</span><button class="btn-add" onclick="add('Crispy')">+</button></div>
+    <div class="item"><span>Chessy Chiken (600)</span><button class="btn-add" onclick="add('Chessy Chiken')">+</button></div>
+    <div class="item"><span>Mortadella (650)</span><button class="btn-add" onclick="add('Mortadella')">+</button></div>
+    <div class="item"><span>Chiken & Crevette (650)</span><button class="btn-add" onclick="add('Chiken & Crevette')">+</button></div>
+    <div class="item"><span>Chessy Smile (650)</span><button class="btn-add" onclick="add('Chessy Smile')">+</button></div>
 
     <div class="cat">TACOS</div>
-    <div class="item"><span>Tacos Poulet</span><button class="btn-add" onclick="add('Tacos Poulet')">+</button></div>
-    <div class="item"><span>Tacos Mixte</span><button class="btn-add" onclick="add('Tacos Mixte')">+</button></div>
+    <div class="item"><span>Tacos Poulet (500/650)</span><button class="btn-add" onclick="add('Tacos Poulet')">+</button></div>
+    <div class="item"><span>Tacos Mixte (650/800)</span><button class="btn-add" onclick="add('Tacos Mixte')">+</button></div>
+    <div class="item"><span>Tacos Crispé (650/800)</span><button class="btn-add" onclick="add('Tacos Crispé')">+</button></div>
+    <div class="item"><span>Tacos Gratiné (1000)</span><button class="btn-add" onclick="add('Tacos Gratiné')">+</button></div>
+
+    <div class="cat">BURGERS</div>
+    <div class="item"><span>Cheese Burger (350)</span><button class="btn-add" onclick="add('Cheese Burger')">+</button></div>
+    <div class="item"><span>Big Burger (400)</span><button class="btn-add" onclick="add('Big Burger')">+</button></div>
+    <div class="item"><span>Crispy Burger (450)</span><button class="btn-add" onclick="add('Crispy Burger')">+</button></div>
+
+    <div class="cat">GRATINS</div>
+    <div class="item"><span>Gratin Poulet (500)</span><button class="btn-add" onclick="add('Gratin Poulet')">+</button></div>
+    <div class="item"><span>Gratin Viande (600)</span><button class="btn-add" onclick="add('Gratin Viande')">+</button></div>
+    <div class="item"><span>Gratin Mixte (650)</span><button class="btn-add" onclick="add('Gratin Mixte')">+</button></div>
+
+    <div class="cat">POUTINES</div>
+    <div class="item"><span>Poutine Pané (650)</span><button class="btn-add" onclick="add('Poutine Pané')">+</button></div>
+    <div class="item"><span>Poutine Mariné (650)</span><button class="btn-add" onclick="add('Poutine Mariné')">+</button></div>
+    <div class="item"><span>Poutine Mixte (800)</span><button class="btn-add" onclick="add('Poutine Mixte')">+</button></div>
+    <div class="item"><span>Poutine Chiken & Crevette (800)</span><button class="btn-add" onclick="add('Poutine Chiken & Crevette')">+</button></div>
+
+    <div class="cat">SALADES</div>
+    <div class="item"><span>Salade Smile (600)</span><button class="btn-add" onclick="add('Salade Smile')">+</button></div>
 
     <div id="cart">
         <h3>Votre Commande 🛒</h3>
@@ -43,7 +91,7 @@
         function add(item) {
             cart.push(item);
             document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i}</li>`).join('');
-            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Bonjour, je voudrais commander: " + cart.join(', ');
+            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.join(', ');
         }
     </script>
 </body>

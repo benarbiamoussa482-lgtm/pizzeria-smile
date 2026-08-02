@@ -200,6 +200,18 @@
     <button onclick="sendOrderWhatsApp()" style="width:100%; padding:10px; background:#25d366; color:#fff; border:none;">CONFIRMER LA COMMANDE</button>
     <button onclick="document.getElementById('cart-modal').style.display='none'">Fermer</button>
 </div>
+<!-- نافذة الطلب (الـ Modal) -->
+<div id="cart-modal" style="display:none; position:fixed; top:50px; left:5%; width:90%; background:#fff; padding:20px; border-radius:15px; z-index:1000; box-shadow:0 0 20px rgba(0,0,0,0.3);">
+    <h3 style="text-align:center;">Votre Panier</h3>
+    <div id="cart-items" style="max-height:200px; overflow-y:auto; margin-bottom:15px;"></div>
+    <p style="font-weight:bold; font-size:1.2em;">Total: <span id="cart-total">0</span> DA</p>
+    
+    <input type="text" id="customer-phone" placeholder="Numéro de téléphone" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd;">
+    <input type="text" id="customer-address" placeholder="Adresse de livraison" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd;">
+    
+    <button onclick="sendOrderWhatsApp()" style="width:100%; padding:12px; background:#25d366; color:#fff; border:none; border-radius:5px; font-weight:bold;">CONFIRMER & COMMANDER</button>
+    <button onclick="document.getElementById('cart-modal').style.display='none'" style="width:100%; padding:10px; margin-top:10px; background:#ff4444; color:#fff; border:none; border-radius:5px;">Fermer</button>
+</div>
 
 </body><meta name="google-site-verification" content="-Sq_IX08zQ7O7QrpBoSCQF0o5pspR7eB4o4Ide6i_Z8" />
 </html>

@@ -189,5 +189,16 @@
     </footer>
 
     <script src="script.js"></script>
+    <!-- نافذة السلة -->
+<div id="cart-modal" style="display:none; position:fixed; top:20%; left:10%; width:80%; background:#fff; padding:20px; border-radius:10px; z-index:1000; box-shadow:0 0 10px rgba(0,0,0,0.5);">
+    <h3>Votre Commande</h3>
+    <div id="cart-items"></div>
+    <p><strong>Total: <span id="cart-total">0</span> DA</strong></p>
+    <input type="text" id="customer-phone" placeholder="Numéro de téléphone" style="width:100%; margin:5px 0;">
+    <input type="text" id="customer-address" placeholder="Adresse de livraison" style="width:100%; margin:5px 0;">
+    <button onclick="sendOrderWhatsApp()" style="width:100%; padding:10px; background:#25d366; color:#fff; border:none;">CONFIRMER LA COMMANDE</button>
+    <button onclick="document.getElementById('cart-modal').style.display='none'">Fermer</button>
+</div>
+
 </body><meta name="google-site-verification" content="-Sq_IX08zQ7O7QrpBoSCQF0o5pspR7eB4o4Ide6i_Z8" />
 </html>

@@ -164,4 +164,41 @@ const nav = document.querySelector('nav');
 mobileMenuBtn.addEventListener('click', () => {
     nav.classList.toggle('active');
 });
+let cart = [];
+
+function addToCart(name, price) {
+    cart.push({ name, price });
+    alert(name + " ajouté !");
+}
+
+function showCart() {
+    let modal = document.getElementById('cart-modal');
+    let itemsDiv = document.getElementById('cart-items');
+    let total = 0;
+    itemsDiv.innerHTML = '';
+    
+    cart.forEach(item => {
+        itemsDiv.innerHTML += `<p>${item.name} - ${item.price} DA</p>`;
+        total += parseInt(item.price);
+    });
+    
+    document.getElementById('cart-total').innerText = total;
+    modal.style.display = 'block';
+}
+
+function sendOrderWhatsApp() {
+    let phone = document.getElementById('customer-phone').value;
+    let address = document.getElementById('customer-address').value;
+    let total = document.getElementById('cart-total').innerText;
+    
+    if(!phone || !address) { alert("Veuillez remplir le téléphone et l'adresse"); return; }
+    
+    let msg = `Nouvelle commande:%0A`;
+    cart.forEach(item => msg += `- ${item.name} (${item.price} DA)%0A`);
+    msg += `%0A*Total: ${total} DA*%0A*Téléphone:* ${phone}%0A*Adresse:* ${address}`;
+    
+    window.open(`https://wa.me/213549290971?text=${msg}`, '_blank');
+}
+// داخل دالة filterMenu
+<button class="btn-add" onclick="addToCart('${item.name}', '${item.prices.split(':')[1].split(' ')[0]}')">+ AJOUTER</button>
 

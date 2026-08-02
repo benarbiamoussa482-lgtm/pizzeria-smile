@@ -87,38 +87,33 @@ const defaultImages = {
     plats: "https://images.unsplash.com/photo-1544025162-8315ea07525b?w=500&q=80",
     salades: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
 };
-
 let cart = [];
 
 function filterMenu(category) {
-    document.querySelectorAll('.category-card').forEach(card => card.classList.remove('active'));
-    if(event && event.currentTarget) event.currentTarget.classList.add('active');
-    
+    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+    event.currentTarget.classList.add('active');
     const container = document.getElementById('menu-container');
     container.innerHTML = '';
-    const items = menuData[category] || [];
-    
-    items.forEach(item => {
+    menuData[category].forEach(item => {
         container.innerHTML += `
             <div class="menu-item">
-                <img src="${defaultImages[category]}" alt="${item.name}">
-                <h3>${item.name}</h3>
-                <p class="desc">${item.desc}</p>
-                <div class="price-list">${item.prices}</div>
-                <button class="btn-add" onclick="addToCart('${item.name}', '${item.prices}')">+ AJOUTER</button>
-            </div>
-        `;
+                <div class="menu-item-info">
+                    <h3>${item.name}</h3>
+                    <p style="font-size:0.8em; color:#aaa;">${item.desc}</p>
+                    <div style="font-weight:bold; margin:10px 0;">${item.prices}</div>
+                    <button class="btn-add" onclick="addToCart('${item.name}', '${item.prices}')">AJOUTER</button>
+                </div>
+            </div>`;
     });
 }
 
 function addToCart(name, price) {
     let priceValue = parseInt(price.replace(/[^0-9]/g, ''));
     cart.push({ name, price: priceValue });
-    alert(name + " ajouté au panier !");
+    alert(name + " ajouté !");
 }
 
 function showCart() {
-    let modal = document.getElementById('cart-modal');
     let itemsDiv = document.getElementById('cart-items');
     let total = 0;
     itemsDiv.innerHTML = '';
@@ -127,18 +122,16 @@ function showCart() {
         total += item.price;
     });
     document.getElementById('cart-total').innerText = total;
-    modal.style.display = 'block';
+    document.getElementById('cart-modal').style.display = 'block';
 }
 
 function sendOrderWhatsApp() {
     let phone = document.getElementById('customer-phone').value;
     let address = document.getElementById('customer-address').value;
-    let total = document.getElementById('cart-total').innerText;
     if(!phone || !address) { alert("Veuillez remplir téléphone et adresse!"); return; }
-    let msg = `Nouvelle commande:%0A`;
-    cart.forEach(item => msg += `- ${item.name} (${item.price} DA)%0A`);
-    msg += `%0A*Total:* ${total} DA%0A*Téléphone:* ${phone}%0A*Adresse:* ${address}`;
-    window.open(`https://wa.me/213549290971?text=${msg}`, '_blank');
+    let msg = `Commande Pizzeria Smile:%0A`;
+    cart.forEach(item => msg += `- ${item.name}%0A`);
+    window.open(`https://wa.me/213549290971?text=${msg}%0ATéléphone: ${phone}%0AAdresse: ${address}`, '_blank');
 }
 
 window.onload = () => { filterMenu('pizzas'); };

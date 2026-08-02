@@ -84,11 +84,13 @@ const defaultImages = {
     sandwichs: "https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?w=500&q=80",
     burgers: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80",
     tacos: "https://images.unsplash.com/photo-1662483526685-6ff83637eab8?w=500&q=80",
-    gratines: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=500&q=80",
+    gratines: "https://images.unsplash.com/photo-1619895092538-128341789043?w=500&q=80", // تم تغيير رابط الغراتان هنا
     poutine: "https://images.unsplash.com/photo-1586805608485-add336722759?w=500&q=80",
     plats: "https://images.unsplash.com/photo-1544025162-8315ea07525b?w=500&q=80",
     salades: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
 };
+
+   
 
 let cartCount = 0;
 

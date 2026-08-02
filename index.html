@@ -3,44 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Smile | Commande</title>
+    <title>Pizzeria Smile | Commande en ligne</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
     <header>
-        <div class="header-container">
-            <h2>SMILE <span style="color:#ff9800;">PIZZA</span></h2>
-            <div class="cart-icon" onclick="showCart()" style="cursor:pointer; font-size: 1.5em;">
-                <i class="fa-solid fa-cart-shopping"></i>
-            </div>
-        </div>
+        <div class="logo">PIZZERIA <span>SMILE</span></div>
+        <div class="cart-btn" onclick="showCart()">🛒 Panier (<span id="cart-count">0</span>)</div>
     </header>
 
-    <div class="categories">
-        <div class="category-card active" onclick="filterMenu('pizzas')"><i class="fa-solid fa-pizza-slice"></i><p>PIZZAS</p></div>
-        <div class="category-card" onclick="filterMenu('sandwichs')"><i class="fa-solid fa-hotdog"></i><p>SANDWICHS</p></div>
-        <div class="category-card" onclick="filterMenu('burgers')"><i class="fa-solid fa-burger"></i><p>BURGERS</p></div>
-        <div class="category-card" onclick="filterMenu('tacos')"><i class="fa-solid fa-burrito"></i><p>TACOS</p></div>
-        <div class="category-card" onclick="filterMenu('gratines')"><i class="fa-solid fa-bowl-food"></i><p>GRATINES</p></div>
-        <div class="category-card" onclick="filterMenu('poutine')"><i class="fa-solid fa-cheese"></i><p>POUTINE</p></div>
-        <div class="category-card" onclick="filterMenu('plats')"><i class="fa-solid fa-utensils"></i><p>PLATS</p></div>
-        <div class="category-card" onclick="filterMenu('salades')"><i class="fa-solid fa-leaf"></i><p>SALADES</p></div>
+    <div class="menu-container" id="menu">
+        <!-- سيتم توليد الأقسام هنا بواسطة الجافا سكريبت -->
     </div>
 
-    <div id="menu-container" class="menu-container"></div>
-
-    <div id="cart-modal">
-        <h2 style="text-align:center;">VOTRE PANIER</h2>
-        <div id="cart-items"></div>
-        <div style="font-size: 1.2em; text-align:center; margin: 20px 0;">Total: <span id="cart-total">0</span> DA</div>
-        <input type="text" id="customer-phone" placeholder="Numéro de téléphone">
-        <input type="text" id="customer-address" placeholder="Adresse de livraison">
-        <button class="btn-confirm" onclick="sendOrderWhatsApp()">CONFIRMER LA COMMANDE</button>
-        <button class="btn-close" onclick="document.getElementById('cart-modal').style.display='none'">Fermer</button>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>Votre Panier</h2>
+            <div id="cart-items"></div>
+            <input type="text" id="name" placeholder="Nom complet">
+            <input type="text" id="address" placeholder="Adresse">
+            <button onclick="sendWhatsApp()">Commander sur WhatsApp</button>
+            <button onclick="document.getElementById('modal').style.display='none'">Fermer</button>
+        </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

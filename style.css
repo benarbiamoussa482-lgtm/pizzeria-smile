@@ -1,38 +1,21 @@
-#cart-modal {
-    display: none; 
-    position: fixed; 
-    top: 50px; 
-    left: 5%; 
-    width: 90%; 
-    background: #fff; 
-    padding: 20px; 
-    z-index: 1000; 
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    border-radius: 15px;
-}
-#cart-items {
-    max-height: 200px; 
-    overflow-y: auto; 
-    margin-bottom: 15px;
-}
-.btn-confirm { 
-    background: #25d366; 
-    color: #fff; 
-    width: 100%; 
-    padding: 10px; 
-    border: none; 
-    margin-bottom: 10px; 
-}
-.btn-close { 
-    background: #ff4444; 
-    color: #fff; 
-    width: 100%; 
-    padding: 10px; 
-    border: none; 
-}
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-}
+/* تنسيق أساسي */
+body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+.container { width: 90%; margin: auto; overflow: hidden; }
+
+/* تنسيق التصنيفات (الأزرار العلوية) */
+.categories { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+.category-card { background: #333; color: white; padding: 15px; border-radius: 8px; cursor: pointer; text-align: center; width: 100px; }
+.category-card.active { background: #ff9800; }
+
+/* تنسيق قائمة الطعام (شبكة البطاقات) */
+#menu-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px 0; }
+
+.menu-item { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center; }
+.menu-item img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; }
+.menu-item h3 { margin: 10px 0; color: #333; }
+.menu-item .desc { font-size: 0.9em; color: #666; height: 40px; }
+.price-list { font-weight: bold; font-size: 1.2em; color: #d32f2f; margin: 10px 0; }
+
+/* زر الإضافة */
+.btn-add { background: #25d366; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
+.btn-add:hover { background: #128c7e; }

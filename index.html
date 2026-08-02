@@ -1,163 +1,93 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZZERIA SMILE | Menu</title>
     <style>
-        :root { --primary: #1e3a8a; --accent: #fbbf24; --bg: #0f172a; --text: #ffffff; }
-        body { font-family: sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 250px; }
-        header { background: var(--primary); padding: 25px; text-align: center; border-bottom: 4px solid var(--accent); }
-        .cat { color: var(--accent); font-size: 1.3em; font-weight: bold; margin: 25px 15px 10px; border-left: 4px solid var(--accent); padding-left: 10px; }
-        .item { background: #1e293b; margin: 8px 15px; padding: 12px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #334155; }
-        .name { font-weight: bold; }
-        .sizes { font-size: 0.85em; color: #94a3b8; margin-top: 4px; }
-        .btn-add { background: var(--accent); color: #000; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; }
-        #cart { background: #1e293b; margin: 20px; padding: 15px; border-radius: 10px; border: 2px solid var(--accent); position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; }
-        .total-price { font-size: 1.2em; font-weight: bold; color: var(--accent); margin-top: 10px; border-top: 1px solid #334155; padding-top: 10px; }
-        .whatsapp-btn { display: block; text-align: center; background-color: #25D366; color: white; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+        :root { --primary: #000; --accent: #FFD700; --bg: #1a1a1a; --text: #fff; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); padding-bottom: 250px; }
+        .section-title { color: var(--accent); font-size: 1.5em; border-bottom: 2px solid var(--accent); margin: 30px 20px 15px; padding-bottom: 5px; text-transform: uppercase; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 20px; }
+        .item-card { background: #252525; padding: 15px; border-radius: 8px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        .btn-order { background: var(--accent); color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        #fixed-cart { position: fixed; bottom: 0; width: 100%; background: #000; padding: 20px; border-top: 3px solid var(--accent); text-align: center; }
     </style>
 </head>
 <body>
-    <header><h1>🍕 PIZZERIA SMILE</h1></header>
 
-   
+    <div class="section-title">Nos Pizzas (M / L / XL)</div>
+    <div class="menu-grid">
+        <div class="item-card"><span>Margueritte</span><span>250 / 500 / 1000 DA</span><button class="btn-order" onclick="add('Margueritte', 250)">+</button></div>
+        <div class="item-card"><span>Royale</span><span>350 / 700 / 1300 DA</span><button class="btn-order" onclick="add('Royale', 350)">+</button></div>
+        <div class="item-card"><span>Viande</span><span>400 / 800 / 1500 DA</span><button class="btn-order" onclick="add('Viande', 400)">+</button></div>
+        <div class="item-card"><span>Poulet</span><span>450 / 900 / 1800 DA</span><button class="btn-order" onclick="add('Poulet', 450)">+</button></div>
+        <div class="item-card"><span>Sicilienne</span><span>500 / 1000 / 1900 DA</span><button class="btn-order" onclick="add('Sicilienne', 500)">+</button></div>
+        <div class="item-card"><span>Végétarien</span><span>500 / 1000 / 1900 DA</span><button class="btn-order" onclick="add('Végétarien', 500)">+</button></div>
+        <div class="item-card"><span>Napollaine</span><span>550 / 1100 / 2100 DA</span><button class="btn-order" onclick="add('Napollaine', 550)">+</button></div>
+        <div class="item-card"><span>Romaine</span><span>600 / 1200 / 2200 DA</span><button class="btn-order" onclick="add('Romaine', 600)">+</button></div>
+        <div class="item-card"><span>Boisé</span><span>650 / 1300 / 2300 DA</span><button class="btn-order" onclick="add('Boisé', 650)">+</button></div>
+        <div class="item-card"><span>4 Saison</span><span>700 / 1400 / 2400 DA</span><button class="btn-order" onclick="add('4 Saison', 700)">+</button></div>
+        <div class="item-card"><span>4 Fromage</span><span>700 / 1400 / 2400 DA</span><button class="btn-order" onclick="add('4 Fromage', 700)">+</button></div>
+        <div class="item-card"><span>Campioné</span><span>650 / 1300 / 2400 DA</span><button class="btn-order" onclick="add('Campioné', 650)">+</button></div>
+        <div class="item-card"><span>Chef</span><span>700 / 1400 / 2500 DA</span><button class="btn-order" onclick="add('Chef', 700)">+</button></div>
+        <div class="item-card"><span>Fumée</span><span>700 / 1400 / 2600 DA</span><button class="btn-order" onclick="add('Fumée', 700)">+</button></div>
+        <div class="item-card"><span>Smile</span><span>800 / 1600 / 2600 DA</span><button class="btn-order" onclick="add('Smile', 800)">+</button></div>
+        <div class="item-card"><span>Couvert</span><span>800 / 1600 DA</span><button class="btn-order" onclick="add('Couvert', 800)">+</button></div>
+        <div class="item-card"><span>Venesia</span><span>900 / 1800 DA</span><button class="btn-order" onclick="add('Venesia', 900)">+</button></div>
+        <div class="item-card"><span>Capriccioza</span><span>1000 / 1900 DA</span><button class="btn-order" onclick="add('Capriccioza', 1000)">+</button></div>
+        <div class="item-card"><span>Crevette</span><span>1000 / 2000 DA</span><button class="btn-order" onclick="add('Crevette', 1000)">+</button></div>
+    </div>
 
-    <script>
-        let cart = [];
-        let total = 0;
-        function add(name, price) {
-            cart.push({name, price});
-            total += price;
-            updateCart();
-        }
-        function updateCart() {
-            document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i.name} - ${i.price}</li>`).join('');
-            document.getElementById('total').innerText = "Total: " + total;
-            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.map(i => i.name).join(', ') + " | Total: " + total;
-        }
-    </script>
-</body>
-</html>
+    <div class="section-title">Sandwichs</div>
+    <div class="menu-grid">
+        <div class="item-card"><span>Poulet haché</span><span>200 DA</span><button class="btn-order" onclick="add('Sandwich Poulet', 200)">+</button></div>
+        <div class="item-card"><span>Spécial</span><span>250 DA</span><button class="btn-order" onclick="add('Sandwich Spécial', 250)">+</button></div>
+        <div class="item-card"><span>Spécial Doublé</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Spécial Doublé', 350)">+</button></div>
+        <div class="item-card"><span>Chawarma</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Chawarma', 350)">+</button></div>
+        <div class="item-card"><span>Mariné</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Mariné', 350)">+</button></div>
+        <div class="item-card"><span>Viande Hachée</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Viande', 350)">+</button></div>
+        <div class="item-card"><span>Libané</span><span>400 DA</span><button class="btn-order" onclick="add('Sandwich Libané', 400)">+</button></div>
+        <div class="item-card"><span>Kebda</span><span>400 DA</span><button class="btn-order" onclick="add('Sandwich Kebda', 400)">+</button></div>
+        <div class="item-card"><span>Escalope Crème</span><span>450 DA</span><button class="btn-order" onclick="add('Sandwich Escalope', 450)">+</button></div>
+        <div class="item-card"><span>Mexicain</span><span>450 DA</span><button class="btn-order" onclick="add('Sandwich Mexicain', 450)">+</button></div>
+        <div class="item-card"><span>Smile</span><span>450 DA</span><button class="btn-order" onclick="add('Sandwich Smile', 450)">+</button></div>
+        <div class="item-card"><span>Crispy</span><span>550 DA</span><button class="btn-order" onclick="add('Sandwich Crispy', 550)">+</button></div>
+        <div class="item-card"><span>Chessy Chiken</span><span>600 DA</span><button class="btn-order" onclick="add('Sandwich Chessy Chiken', 600)">+</button></div>
+        <div class="item-card"><span>Mortadella</span><span>650 DA</span><button class="btn-order" onclick="add('Sandwich Mortadella', 650)">+</button></div>
+        <div class="item-card"><span>Chiken & Crevette</span><span>650 DA</span><button class="btn-order" onclick="add('Sandwich Chiken/Crevette', 650)">+</button></div>
+        <div class="item-card"><span>Chessy Smile</span><span>650 DA</span><button class="btn-order" onclick="add('Sandwich Chessy Smile', 650)">+</button></div>
+    </div>
 
-<html lang="fr" dir="ltr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIZZERIA SMILE | Menu</title>
-    <style>
-        /* تم تعديل الألوان هنا */
-        :root { 
-            --primary: #1e3a8a; /* أزرق ملكي */
-            --accent: #fbbf24;  /* ذهبي مشرق */
-            --bg: #0f172a;      /* أزرق داكن جداً للخلفية */
-            --text: #ffffff;
-        }
+    <div class="section-title">Plats, Gratins, Burgers & Salades</div>
+    <div class="menu-grid">
+        <div class="item-card"><span>Plat Spécial</span><span>600 DA</span><button class="btn-order" onclick="add('Plat Spécial', 600)">+</button></div>
+        <div class="item-card"><span>Plat Kabab</span><span>600 DA</span><button class="btn-order" onclick="add('Plat Kabab', 600)">+</button></div>
+        <div class="item-card"><span>Plat Mariné</span><span>650 DA</span><button class="btn-order" onclick="add('Plat Mariné', 650)">+</button></div>
+        <div class="item-card"><span>Plat Kebda</span><span>700 DA</span><button class="btn-order" onclick="add('Plat Kebda', 700)">+</button></div>
+        <div class="item-card"><span>Plat Crème</span><span>700 DA</span><button class="btn-order" onclick="add('Plat Crème', 700)">+</button></div>
+        <div class="item-card"><span>Plat Crispé</span><span>800 DA</span><button class="btn-order" onclick="add('Plat Crispé', 800)">+</button></div>
+        <div class="item-card"><span>Plat Mélange</span><span>2000 DA</span><button class="btn-order" onclick="add('Plat Mélange', 2000)">+</button></div>
+        <div class="item-card"><span>Gratin Poulet</span><span>500 DA</span><button class="btn-order" onclick="add('Gratin Poulet', 500)">+</button></div>
+        <div class="item-card"><span>Gratin Viande</span><span>600 DA</span><button class="btn-order" onclick="add('Gratin Viande', 600)">+</button></div>
+        <div class="item-card"><span>Poutine Pané</span><span>650 DA</span><button class="btn-order" onclick="add('Poutine Pané', 650)">+</button></div>
+        <div class="item-card"><span>Poutine Mixte</span><span>800 DA</span><button class="btn-order" onclick="add('Poutine Mixte', 800)">+</button></div>
+        <div class="item-card"><span>Salade Smile</span><span>600 DA</span><button class="btn-order" onclick="add('Salade Smile', 600)">+</button></div>
+        <div class="item-card"><span>Cheese Burger</span><span>350 DA</span><button class="btn-order" onclick="add('Burger Cheese', 350)">+</button></div>
+        <div class="item-card"><span>Crispy Burger</span><span>450 DA</span><button class="btn-order" onclick="add('Burger Crispy', 450)">+</button></div>
+    </div>
 
-        body { font-family: sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 200px; }
-        header { background: var(--primary); padding: 25px; text-align: center; border-bottom: 4px solid var(--accent); }
-        .cat { color: var(--accent); font-size: 1.3em; font-weight: bold; margin: 25px 15px 10px; border-left: 4px solid var(--accent); padding-left: 10px; }
-        .item { background: #1e293b; margin: 8px 15px; padding: 12px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #334155; }
-        .name { font-weight: bold; }
-        .sizes { font-size: 0.85em; color: #94a3b8; margin-top: 4px; }
-        .btn-add { background: var(--accent); color: #000; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; }
-        #cart { background: #1e293b; margin: 20px; padding: 15px; border-radius: 10px; border: 2px solid var(--accent); position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; }
-        .whatsapp-btn { display: block; text-align: center; background-color: #25D366; color: white; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
-    </style>
-</head>
-<body>
-    <header><h1>🍕 PIZZERIA SMILE</h1></header>
-
-    <!-- باقي الأصناف تظل كما هي في الكود السابق -->
-   
-    <div class="cat">PIZZAS</div>
-    <div class="item"><div><div class="name">Margherita</div><div class="sizes">M:250 | L:500 | XL:1000</div></div><button class="btn-add" onclick="add('Pizza Margherita')">+</button></div>
-    <div class="item"><div><div class="name">Royale</div><div class="sizes">M:350 | L:700 | XL:1300</div></div><button class="btn-add" onclick="add('Pizza Royale')">+</button></div>
-    <div class="item"><div><div class="name">Viande</div><div class="sizes">M:400 | L:800 | XL:1500</div></div><button class="btn-add" onclick="add('Pizza Viande')">+</button></div>
-    <div class="item"><div><div class="name">Poulet</div><div class="sizes">M:450 | L:900 | XL:1800</div></div><button class="btn-add" onclick="add('Pizza Poulet')">+</button></div>
-    <div class="item"><div><div class="name">Sicilienne</div><div class="sizes">M:500 | L:1000 | XL:1900</div></div><button class="btn-add" onclick="add('Pizza Sicilienne')">+</button></div>
-    <div class="item"><div><div class="name">Végétarien</div><div class="sizes">M:500 | L:1000 | XL:1900</div></div><button class="btn-add" onclick="add('Pizza Végétarien')">+</button></div>
-    <div class="item"><div><div class="name">Napolienne</div><div class="sizes">M:550 | L:1100 | XL:2100</div></div><button class="btn-add" onclick="add('Pizza Napolienne')">+</button></div>
-    <div class="item"><div><div class="name">Romaine</div><div class="sizes">M:600 | L:1200 | XL:2200</div></div><button class="btn-add" onclick="add('Pizza Romaine')">+</button></div>
-    <div class="item"><div><div class="name">Boisé</div><div class="sizes">M:650 | L:1300 | XL:2300</div></div><button class="btn-add" onclick="add('Pizza Boisé')">+</button></div>
-    <div class="item"><div><div class="name">4 Saisons</div><div class="sizes">M:700 | L:1400 | XL:2400</div></div><button class="btn-add" onclick="add('Pizza 4 Saisons')">+</button></div>
-    <div class="item"><div><div class="name">4 Fromages</div><div class="sizes">M:700 | L:1400 | XL:2400</div></div><button class="btn-add" onclick="add('Pizza 4 Fromages')">+</button></div>
-    <div class="item"><div><div class="name">Campioné</div><div class="sizes">M:650 | L:1300 | XL:2400</div></div><button class="btn-add" onclick="add('Pizza Campioné')">+</button></div>
-    <div class="item"><div><div class="name">Chef</div><div class="sizes">M:700 | L:1400 | XL:2500</div></div><button class="btn-add" onclick="add('Pizza Chef')">+</button></div>
-    <div class="item"><div><div class="name">Fumée</div><div class="sizes">M:700 | L:1400 | XL:2600</div></div><button class="btn-add" onclick="add('Pizza Fumée')">+</button></div>
-    <div class="item"><div><div class="name">Smile</div><div class="sizes">M:800 | L:1600 | XL:2600</div></div><button class="btn-add" onclick="add('Pizza Smile')">+</button></div>
-    <div class="item"><div><div class="name">Couvert</div><div class="sizes">M:800 | L:1600</div></div><button class="btn-add" onclick="add('Pizza Couvert')">+</button></div>
-    <div class="item"><div><div class="name">Venesia</div><div class="sizes">M:900 | L:1800</div></div><button class="btn-add" onclick="add('Pizza Venesia')">+</button></div>
-    <div class="item"><div><div class="name">Capriccioza</div><div class="sizes">M:1000 | L:1900</div></div><button class="btn-add" onclick="add('Pizza Capriccioza')">+</button></div>
-    <div class="item"><div><div class="name">Crevette</div><div class="sizes">M:1000 | L:2000</div></div><button class="btn-add" onclick="add('Pizza Crevette')">+</button></div>
-
-    <div class="cat">SANDWICHS</div>
-    <div class="item"><div><div class="name">Poulet hachée</div><div class="sizes">Prix: 200</div></div><button class="btn-add" onclick="add('Poulet hachée')">+</button></div>
-    <div class="item"><div><div class="name">Spécial</div><div class="sizes">Prix: 250</div></div><button class="btn-add" onclick="add('Spécial')">+</button></div>
-    <div class="item"><div><div class="name">Spécial Doublé</div><div class="sizes">Prix: 350</div></div><button class="btn-add" onclick="add('Spécial Doublé')">+</button></div>
-    <div class="item"><div><div class="name">Chawarma</div><div class="sizes">Prix: 350</div></div><button class="btn-add" onclick="add('Chawarma')">+</button></div>
-    <div class="item"><div><div class="name">Mariné</div><div class="sizes">Prix: 350</div></div><button class="btn-add" onclick="add('Mariné')">+</button></div>
-    <div class="item"><div><div class="name">Viande Haché</div><div class="sizes">Prix: 350</div></div><button class="btn-add" onclick="add('Viande Haché')">+</button></div>
-    <div class="item"><div><div class="name">Libané</div><div class="sizes">Prix: 400</div></div><button class="btn-add" onclick="add('Libané')">+</button></div>
-    <div class="item"><div><div class="name">Kebda</div><div class="sizes">Prix: 400</div></div><button class="btn-add" onclick="add('Kebda')">+</button></div>
-    <div class="item"><div><div class="name">Escalope à la crème</div><div class="sizes">Prix: 450</div></div><button class="btn-add" onclick="add('Escalope à la crème')">+</button></div>
-    <div class="item"><div><div class="name">Mexicain</div><div class="sizes">Prix: 450</div></div><button class="btn-add" onclick="add('Mexicain')">+</button></div>
-    <div class="item"><div><div class="name">Smile</div><div class="sizes">Prix: 450</div></div><button class="btn-add" onclick="add('Sandwich Smile')">+</button></div>
-    <div class="item"><div><div class="name">Crispy</div><div class="sizes">Prix: 550</div></div><button class="btn-add" onclick="add('Crispy')">+</button></div>
-    <div class="item"><div><div class="name">Chessy Chiken</div><div class="sizes">Prix: 600</div></div><button class="btn-add" onclick="add('Chessy Chiken')">+</button></div>
-    <div class="item"><div><div class="name">Mortadella</div><div class="sizes">Prix: 650</div></div><button class="btn-add" onclick="add('Mortadella')">+</button></div>
-    <div class="item"><div><div class="name">Chiken & Crevette</div><div class="sizes">Prix: 650</div></div><button class="btn-add" onclick="add('Chiken & Crevette')">+</button></div>
-    <div class="item"><div><div class="name">Chessy Smile</div><div class="sizes">Prix: 650</div></div><button class="btn-add" onclick="add('Chessy Smile')">+</button></div>
-
-    <div class="cat">TACOS</div>
-    <div class="item"><div><div class="name">Tacos Poulet</div><div class="sizes">M:500 | L:650</div></div><button class="btn-add" onclick="add('Tacos Poulet')">+</button></div>
-    <div class="item"><div><div class="name">Tacos Mixte</div><div class="sizes">M:650 | L:800</div></div><button class="btn-add" onclick="add('Tacos Mixte')">+</button></div>
-    <div class="item"><div><div class="name">Tacos Crispé</div><div class="sizes">M:650 | L:800</div></div><button class="btn-add" onclick="add('Tacos Crispé')">+</button></div>
-    <div class="item"><div><div class="name">Tacos Gratiné</div><div class="sizes">Prix: 1000</div></div><button class="btn-add" onclick="add('Tacos Gratiné')">+</button></div>
-
-    <div class="cat">BURGERS</div>
-    <div class="item"><div><div class="name">Cheese Burger</div><div class="sizes">Prix: 350</div></div><button class="btn-add" onclick="add('Cheese Burger')">+</button></div>
-    <div class="item"><div><div class="name">Big Burger</div><div class="sizes">Prix: 400</div></div><button class="btn-add" onclick="add('Big Burger')">+</button></div>
-    <div class="item"><div><div class="name">Crispy Burger</div><div class="sizes">Prix: 450</div></div><button class="btn-add" onclick="add('Crispy Burger')">+</button></div>
-
-    <div class="cat">GRATINS</div>
-    <div class="item"><div><div class="name">Gratin Poulet</div><div class="sizes">Prix: 500</div></div><button class="btn-add" onclick="add('Gratin Poulet')">+</button></div>
-    <div class="item"><div><div class="name">Gratin Viande</div><div class="sizes">Prix: 600</div></div><button class="btn-add" onclick="add('Gratin Viande')">+</button></div>
-    <div class="item"><div><div class="name">Gratin Mixte</div><div class="sizes">Prix: 650</div></div><button class="btn-add" onclick="add('Gratin Mixte')">+</button></div>
-
-    <div class="cat">POUTINES</div>
-    <div class="item"><div><div class="name">Poutine Pané</div><div class="sizes">Prix: 650</div></div><button class="btn-add" onclick="add('Poutine Pané')">+</button></div>
-    <div class="item"><div><div class="name">Poutine Mariné</div><div class="sizes">Prix: 650</div></div><button class="btn-add" onclick="add('Poutine Mariné')">+</button></div>
-    <div class="item"><div><div class="name">Poutine Mixte</div><div class="sizes">Prix: 800</div></div><button class="btn-add" onclick="add('Poutine Mixte')">+</button></div>
-    <div class="item"><div><div class="name">Poutine Chiken & Crevette</div><div class="sizes">Prix: 800</div></div><button class="btn-add" onclick="add('Poutine Chiken & Crevette')">+</button></div>
-
-    <div class="cat">SALADES</div>
-    <div class="item"><div><div class="name">Salade Smile</div><div class="sizes">Prix: 600</div></div><button class="btn-add" onclick="add('Salade Smile')">+</button></div>
-
-    <div id="cart">
-        <div style="font-weight:bold; margin-bottom:5px;">Votre Commande 🛒</div>
-        <ul id="cart-list" style="margin:5px 0; padding-left:20px; font-size:0.9em;"><li>Panier vide</li></ul>
-        <a href="#" id="order-link" class="whatsapp-btn">Commander par WhatsApp</a>
+    <div id="fixed-cart">
+        <div id="cart-content">Panier vide</div>
+        <div id="total-price" style="margin: 10px 0; color: var(--accent);">Total: 0 DA</div>
+        <a href="#" id="wa-link" style="color: #25D366; text-decoration: none; font-weight: bold;">Commander par WhatsApp 💬</a>
     </div>
 
     <script>
-        let cart = [];
-        function add(item) {
-            cart.push(item);
-            document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i}</li>`).join('');
-            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.join(', ');
-        }
-    </script>
-</body>
-</html>
-
-
-    <script>
-        let cart = [];
-        function add(item) {
-            cart.push(item);
-            document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i}</li>`).join('');
-            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.join(', ');
+        let cart = []; let total = 0;
+        function add(n, p) {
+            cart.push(n); total += p;
+            document.getElementById('cart-content').innerText = cart.join(', ');
+            document.getElementById('total-price').innerText = "Total: " + total + " DA";
+            document.getElementById('wa-link').href = "https://wa.me/213775077197?text=Commande:%0A" + cart.join('%0A') + "%0A%0ATotal: " + total + " DA";
         }
     </script>
 </body>

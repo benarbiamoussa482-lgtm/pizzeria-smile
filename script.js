@@ -75,7 +75,57 @@ const menuData = {
     ],
     salades: [
         { name: "Salade Smile", desc: "Salade fraîche", prices: "M:600 DA" }
-    ]
+    ]let cart = [];
+
+// دالة إضافة للسلة
+function addToCart(name, price) {
+    // سنأخذ أول سعر يظهر (مثلاً 250 من M:250)
+    let priceValue = parseInt(price.replace(/[^0-9]/g, ''));
+    cart.push({ name, price: priceValue });
+    
+    // تحديث العداد
+    document.getElementById('cart-count').innerText = cart.length;
+    alert(name + " ajouté au panier !");
+}
+
+// عرض السلة
+function showCart() {
+    let modal = document.getElementById('cart-modal');
+    let itemsDiv = document.getElementById('cart-items');
+    let total = 0;
+    itemsDiv.innerHTML = '';
+    
+    cart.forEach((item, index) => {
+        itemsDiv.innerHTML += `<p>${item.name} - ${item.price} DA</p>`;
+        total += item.price;
+    });
+    
+    document.getElementById('cart-total').innerText = total;
+    modal.style.display = 'block';
+}
+
+// إرسال الطلب للواتساب
+function sendOrderWhatsApp() {
+    let phone = document.getElementById('customer-phone').value;
+    let address = document.getElementById('customer-address').value;
+    let total = document.getElementById('cart-total').innerText;
+    
+    if(!phone || !address) { alert("Veuillez remplir votre téléphone et adresse !"); return; }
+    
+    let msg = `Nouvelle commande Pizzeria Smile:%0A`;
+    cart.forEach(item => msg += `- ${item.name} (${item.price} DA)%0A`);
+    msg += `%0A*Total:* ${total} DA%0A*Téléphone:* ${phone}%0A*Adresse:* ${address}`;
+    
+    window.open(`https://wa.me/213549290971?text=${msg}`, '_blank');
+}
+
+// تعديل دالة فلترة القائمة لربط زر الإضافة الجديد
+function filterMenu(category) {
+    // ... (نفس الكود القديم الخاص بك، فقط عدل سطر الزر ليصبح كالتالي) ...
+    // في داخل حلقة الـ forEach التي تنشئ الـ productHtml:
+    // <button class="btn-add" onclick="addToCart('${item.name}', '${item.prices}')">+ AJOUTER</button>
+}
+
 };
 
 // روابط الصور الافتراضية لكل تصنيف (يمكنك تغييرها لاحقاً لصور الأطباق الحقيقية)

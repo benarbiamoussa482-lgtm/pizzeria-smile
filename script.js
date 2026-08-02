@@ -87,24 +87,44 @@ const defaultImages = {
     gratines: "https://images.unsplash.com/photo-1619895092538-128341789043?w=500&q=80", // تم تغيير رابط الغراتان هنا
     poutine: "https://images.unsplash.com/photo-1586805608485-add336722759?w=500&q=80",
     plats: "https://images.unsplash.com/photo-1544025162-8315ea07525b?w=500&q=80",
-    salades: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
-};
-
-   
-
-let cartCount = 0;
-
-// دالة تحديث وعرض القائمة بناءً على التصنيف
+    salades: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=
+    
+    // إذا كان هناك حدث نقر، قم بتفعيله
+    if(event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }// دالة تحديث وعرض القائمة بناءً على التصنيف
 function filterMenu(category) {
     // تحديث الزر النشط في التصنيفات
     document.querySelectorAll('.category-card').forEach(card => {
         card.classList.remove('active');
     });
     
-    // إذا كان هناك حدث نقر، قم بتفعيله
+    // تفعيل الزر المختار
     if(event && event.currentTarget) {
         event.currentTarget.classList.add('active');
     }
+
+    const container = document.getElementById('menu-container');
+    if(!container) return;
+    container.innerHTML = ''; 
+
+    const items = menuData[category] || [];
+    
+    items.forEach(item => {
+        // هذا هو السطر المهم الذي تم تعديله ليقوم بفتح السلة
+        const productHtml = `
+            <div class="menu-item">
+                <img src="${defaultImages[category]}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p class="desc">${item.desc}</p>
+                <div class="price-list">${item.prices}</div>
+                <button class="btn-add" onclick="addToCart('${item.name}', '${item.prices}')">+ AJOUTER</button>
+            </div>
+        `;
+        container.innerHTML += productHtml;
+    });
+}
+
 
     const container = document.getElementById('menu-container');
     if(!container) return; // حماية من الأخطاء إذا لم يكتمل تحميل الصفحة

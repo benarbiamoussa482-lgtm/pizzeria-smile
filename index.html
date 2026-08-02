@@ -1,4 +1,45 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIZZERIA SMILE | Menu</title>
+    <style>
+        :root { --primary: #1e3a8a; --accent: #fbbf24; --bg: #0f172a; --text: #ffffff; }
+        body { font-family: sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding-bottom: 250px; }
+        header { background: var(--primary); padding: 25px; text-align: center; border-bottom: 4px solid var(--accent); }
+        .cat { color: var(--accent); font-size: 1.3em; font-weight: bold; margin: 25px 15px 10px; border-left: 4px solid var(--accent); padding-left: 10px; }
+        .item { background: #1e293b; margin: 8px 15px; padding: 12px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #334155; }
+        .name { font-weight: bold; }
+        .sizes { font-size: 0.85em; color: #94a3b8; margin-top: 4px; }
+        .btn-add { background: var(--accent); color: #000; border: none; padding: 8px 15px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+        #cart { background: #1e293b; margin: 20px; padding: 15px; border-radius: 10px; border: 2px solid var(--accent); position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; }
+        .total-price { font-size: 1.2em; font-weight: bold; color: var(--accent); margin-top: 10px; border-top: 1px solid #334155; padding-top: 10px; }
+        .whatsapp-btn { display: block; text-align: center; background-color: #25D366; color: white; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <header><h1>🍕 PIZZERIA SMILE</h1></header>
+
+   
+
+    <script>
+        let cart = [];
+        let total = 0;
+        function add(name, price) {
+            cart.push({name, price});
+            total += price;
+            updateCart();
+        }
+        function updateCart() {
+            document.getElementById('cart-list').innerHTML = cart.map(i => `<li>${i.name} - ${i.price}</li>`).join('');
+            document.getElementById('total').innerText = "Total: " + total;
+            document.getElementById('order-link').href = "https://wa.me/213775077197?text=Commande: " + cart.map(i => i.name).join(', ') + " | Total: " + total;
+        }
+    </script>
+</body>
+</html>
+
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">

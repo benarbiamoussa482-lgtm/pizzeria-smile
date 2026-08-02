@@ -1,137 +1,83 @@
-const menuData = {
-    pizzas: [
-        { name: "Pizza Marguerite", desc: "Sauce Tomate, Fromage, Olive.", prices: "M:250 DA" },
-        { name: "Pizza Royale", desc: "Sauce Tomate, Fromage, Poulet Hachée, Olive.", prices: "M:350 DA" },
-        { name: "Pizza Viande", desc: "Sauce Tomate, Fromage, Viande Hachée, Olive.", prices: "M:400 DA" },
-        { name: "Pizza Poulet", desc: "Sauce Tomate, Poulet, Olive.", prices: "M:450 DA" },
-        { name: "Pizza Sicilienne", desc: "Sauce Tomate, Fromage, Thon, Olive.", prices: "M:500 DA" },
-        { name: "Pizza Végétarien", desc: "Fromage, Champignon, Poivron, Oignon, Maïs, Olive.", prices: "M:500 DA" },
-        { name: "Pizza Napolliaine", desc: "Sauce Tomate, Fromage, Champignon, Viande Hachée, Olive.", prices: "M:550 DA" },
-        { name: "Pizza Romaine", desc: "Sauce Tomate, Fromage, Demi-Poulet, Demi-Viande Hachée, Cheddar, Olive.", prices: "M:600 DA" },
-        { name: "Pizza Boisé", desc: "Sauce Blanche, Fromage, Poulet, Cheddar, Olive.", prices: "M:650 DA" },
-        { name: "Pizza 4 Saison", desc: "Poulet, Champignon, Thon, Olive.", prices: "M:700 DA" },
-        { name: "Pizza 4 Fromage", desc: "Sauce Blanche, Fromage Fondu, Cheddar, Gouda, Camembert, Olive.", prices: "M:700 DA" },
-        { name: "Pizza Compioné", desc: "Sauce Tomate, Viande Hachée, Mozzarella, Cheddar, Olive.", prices: "M:650 DA" },
-        { name: "Pizza Chef", desc: "Sauce Tomate, Fromage, Viande Hachée, Kebab, Cheddar, Olive.", prices: "M:700 DA" },
-        { name: "Pizza Fumée", desc: "Sauce Tomate, Rôti Fumée, Mozzarella, Cheddar, Olive.", prices: "M:700 DA" },
-        { name: "Pizza Smile", desc: "Sauce Tomate, Fromage, Poulet, Viande Hachée, Cheddar, Olive, avec bordure Fromage.", prices: "M:800 DA" },
-        { name: "Pizza Couvert", desc: "Sauce Tomate, Poulet, Fromage Fondu, Cheddar, Olive.", prices: "M:800 DA" },
-        { name: "Pizza Venesia", desc: "Sauce Tomate, Poulet, Viande Hachée, Mozzarella, Cheddar, Olive.", prices: "M:900 DA" },
-        { name: "Pizza Capriccioza", desc: "Sauce Tomate, Poulet, Viande Hachée, Mozzarella, Cheddar, Olive, Avec Bordure Fromage.", prices: "M:1000 DA" },
-        { name: "Pizza Crevette", desc: "Sauce Tomate, Fromage, Crevette, Cheddar, Olive.", prices: "M:1000 DA" }
-    ],
-    sandwichs: [
-        { name: "Poulet hachée", desc: "Sandwich délicieux", prices: "M:200 DA" },
-        { name: "Spécial", desc: "Sandwich délicieux", prices: "M:250 DA" },
-        { name: "Spécial Doublé", desc: "Sandwich délicieux", prices: "M:350 DA" },
-        { name: "Chawarma", desc: "Sandwich délicieux", prices: "M:350 DA" },
-        { name: "Mariné", desc: "Sandwich délicieux", prices: "M:350 DA" },
-        { name: "Viande Haché", desc: "Sandwich délicieux", prices: "M:350 DA" },
-        { name: "Libané", desc: "Sandwich délicieux", prices: "M:400 DA" },
-        { name: "Kebda", desc: "Sandwich délicieux", prices: "M:400 DA" },
-        { name: "Escalope à la crème", desc: "Sandwich délicieux", prices: "M:450 DA" },
-        { name: "Mexicain", desc: "Sandwich délicieux", prices: "M:450 DA" },
-        { name: "Smile", desc: "Sandwich délicieux", prices: "M:450 DA" },
-        { name: "Crispy", desc: "Sandwich délicieux", prices: "M:550 DA" },
-        { name: "Chessy Chiken", desc: "Sandwich délicieux", prices: "M:600 DA" },
-        { name: "Mortadella", desc: "Sandwich délicieux", prices: "M:650 DA" },
-        { name: "Chiken & Crevette", desc: "Sandwich délicieux", prices: "M:650 DA" },
-        { name: "Chessy Smile", desc: "Sandwich délicieux", prices: "M:650 DA" }
-    ],
-    burgers: [
-        { name: "Burger", desc: "Savoureux", prices: "M:250 DA" },
-        { name: "Cheese Burger", desc: "Savoureux", prices: "M:350 DA" },
-        { name: "Big Burger", desc: "Savoureux", prices: "M:400 DA" },
-        { name: "Crispy Burger", desc: "Savoureux", prices: "M:450 DA" },
-        { name: "Burger mixte", desc: "Savoureux", prices: "M:550 DA" }
-    ],
-    tacos: [
-        { name: "Tacos Poulet", desc: "Garni", prices: "M:500 DA" },
-        { name: "Tacos Chawarma", desc: "Garni", prices: "M:500 DA" },
-        { name: "Tacos Viande", desc: "Garni", prices: "M:600 DA" },
-        { name: "Tacos Mixte", desc: "Garni", prices: "M:650 DA" },
-        { name: "Tacos Crispé", desc: "Garni", prices: "M:650 DA" }
-    ],
-    gratines: [
-        { name: "Gratine poulet", desc: "Chaud et fondant", prices: "M:500 DA" },
-        { name: "Gratine viande", desc: "Chaud et fondant", prices: "M:600 DA" },
-        { name: "Gratine Mixte", desc: "Chaud et fondant", prices: "M:650 DA" }
-    ],
-    poutine: [
-        { name: "Poulet pané", desc: "Délicieuse poutine", prices: "M:650 DA" },
-        { name: "Mariné", desc: "Délicieuse poutine", prices: "M:650 DA" },
-        { name: "Mixte", desc: "Délicieuse poutine", prices: "M:800 DA" },
-        { name: "Chiken & Crevette", desc: "Délicieuse poutine", prices: "M:800 DA" }
-    ],
-    plats: [
-        { name: "Plat Spécial", desc: "Plat savoureux", prices: "M:600 DA" },
-        { name: "Plat Kabab", desc: "Plat savoureux", prices: "M:600 DA" },
-        { name: "Plat Mariné", desc: "Plat savoureux", prices: "M:650 DA" },
-        { name: "Plat Kebda", desc: "Plat savoureux", prices: "M:700 DA" },
-        { name: "Plat à la Crème", desc: "Plat savoureux", prices: "M:700 DA" },
-        { name: "Plat Crispé", desc: "Plat savoureux", prices: "M:800 DA" },
-        { name: "Plat Mélange", desc: "Plat savoureux", prices: "M:2000 DA" }
-    ],
-    salades: [
-        { name: "Salade Smile", desc: "Salade fraîche", prices: "M:600 DA" }
-    ]
+const menu = {
+  pizzas: [
+    { name: "Marguerite", prices: { M: "250 DA", L: "500 DA", XL: "1000 DA" } },
+    { name: "Royale", prices: { M: "350 DA", L: "700 DA", XL: "1300 DA" } },
+    { name: "Viande", prices: { M: "400 DA", L: "800 DA", XL: "1500 DA" } },
+    { name: "Poulet", prices: { M: "450 DA", L: "900 DA", XL: "1800 DA" } },
+    { name: "Sicilienne", prices: { M: "500 DA", L: "1000 DA", XL: "1900 DA" } },
+    { name: "Végétarien", prices: { M: "500 DA", L: "1000 DA", XL: "1900 DA" } },
+    { name: "Napolliaine", prices: { M: "550 DA", L: "1100 DA", XL: "2100 DA" } },
+    { name: "Romaine", prices: { M: "600 DA", L: "1200 DA", XL: "2200 DA" } },
+    { name: "Boisé", prices: { M: "650 DA", L: "1300 DA", XL: "2300 DA" } },
+    { name: "4 Saison", prices: { M: "700 DA", L: "1400 DA", XL: "2400 DA" } },
+    { name: "4 Fromage", prices: { M: "700 DA", L: "1400 DA", XL: "2400 DA" } },
+    { name: "Compioné", prices: { M: "650 DA", L: "1300 DA", XL: "2400 DA" } },
+    { name: "Chef", prices: { M: "700 DA", L: "1400 DA", XL: "2500 DA" } },
+    { name: "Fumée", prices: { M: "700 DA", L: "1400 DA", XL: "2600 DA" } },
+    { name: "Smile", prices: { M: "800 DA", L: "1600 DA", XL: "2600 DA" } },
+    { name: "Couvert", prices: { M: "800 DA", L: "1600 DA" } },
+    { name: "Venesia", prices: { M: "900 DA", L: "1800 DA" } },
+    { name: "Capriccioza", prices: { M: "1000 DA", L: "1900 DA" } },
+    { name: "Crevette", prices: { M: "1000 DA", L: "2000 DA" } }
+  ],
+  sandwichs: [
+    { name: "Poulet Hachée", price: "200 DA" }, { name: "Spécial", price: "250 DA" },
+    { name: "Spécial Doublé", price: "350 DA" }, { name: "Chawarma", price: "350 DA" },
+    { name: "Mariné", price: "350 DA" }, { name: "Viande Hachée", price: "350 DA" },
+    { name: "Libanais", price: "400 DA" }, { name: "Kebda", price: "400 DA" },
+    { name: "Escalope à la crème", price: "450 DA" }, { name: "Mexicain", price: "450 DA" },
+    { name: "Smile", price: "450 DA" }, { name: "Crispy", price: "550 DA" },
+    { name: "Chessy Chiken", price: "600 DA" }, { name: "Mortadella", price: "650 DA" },
+    { name: "Chiken & Crevette", price: "650 DA" }, { name: "Chessy Smile", price: "650 DA" }
+  ],
+  tacos: [
+    { name: "Tacos Poulet", prices: { M: "500 DA", L: "650 DA" } },
+    { name: "Tacos Chawarma", prices: { M: "500 DA", L: "650 DA" } },
+    { name: "Tacos Viande", prices: { M: "600 DA", L: "750 DA" } },
+    { name: "Tacos Mixte", prices: { M: "650 DA", L: "800 DA" } },
+    { name: "Tacos Crispé", prices: { M: "650 DA", L: "800 DA" } },
+    { name: "Gratiné (Supplément)", price: "100 DA" }
+  ],
+  burgers: [
+    { name: "Burger", price: "250 DA" }, { name: "Cheese Burger", price: "350 DA" },
+    { name: "Big Burger", price: "400 DA" }, { name: "Crispy Burger", price: "450 DA" },
+    { name: "Burger Mixte", price: "550 DA" }
+  ],
+  plats: [
+    { name: "Plat Spécial", price: "600 DA" }, { name: "Plat Kabab", price: "600 DA" },
+    { name: "Plat Mariné", price: "650 DA" }, { name: "Plat Kebda", price: "700 DA" },
+    { name: "Plat à la Crème", price: "700 DA" }, { name: "Plat Crispé", price: "800 DA" },
+    { name: "Plat Mélange", price: "2000 DA" }
+  ],
+  gratines: [
+    { name: "Gratiné Poulet", price: "500 DA" }, { name: "Gratiné Viande", price: "600 DA" },
+    { name: "Gratiné Mixte", price: "650 DA" }
+  ],
+  poutine: [
+    { name: "Poulet Pané", price: "650 DA" }, { name: "Mariné", price: "650 DA" },
+    { name: "Mixte", price: "800 DA" }, { name: "Chiken & Crevette", price: "800 DA" }
+  ],
+  salade: [{ name: "Salade Smile", price: "600 DA" }],
+  supplements: [{ name: "Tous les suppléments", price: "150 DA" }]
 };
 
-const defaultImages = {
-    pizzas: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&q=80",
-    sandwichs: "https://images.unsplash.com/photo-1619881589316-56c7f9e6b587?w=500&q=80",
-    burgers: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&q=80",
-    tacos: "https://images.unsplash.com/photo-1662483526685-6ff83637eab8?w=500&q=80",
-    gratines: "https://images.unsplash.com/photo-1619895092538-128341789043?w=500&q=80",
-    poutine: "https://images.unsplash.com/photo-1586805608485-add336722759?w=500&q=80",
-    plats: "https://images.unsplash.com/photo-1544025162-8315ea07525b?w=500&q=80",
-    salades: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&q=80"
-};
+// كود العرض
 let cart = [];
+const menuDiv = document.getElementById('menu');
 
-function filterMenu(category) {
-    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-    const container = document.getElementById('menu-container');
-    container.innerHTML = '';
-    menuData[category].forEach(item => {
-        container.innerHTML += `
-            <div class="menu-item">
-                <div class="menu-item-info">
-                    <h3>${item.name}</h3>
-                    <p style="font-size:0.8em; color:#aaa;">${item.desc}</p>
-                    <div style="font-weight:bold; margin:10px 0;">${item.prices}</div>
-                    <button class="btn-add" onclick="addToCart('${item.name}', '${item.prices}')">AJOUTER</button>
-                </div>
+for (let cat in menu) {
+    menuDiv.innerHTML += `<h2 class="section-title">${cat.toUpperCase()}</h2><div class="grid" id="${cat}"></div>`;
+    menu[cat].forEach(item => {
+        let priceText = item.price ? item.price : Object.entries(item.prices).map(p => `${p[0]}: ${p[1]}`).join(' | ');
+        document.getElementById(cat).innerHTML += `
+            <div class="card">
+                <h3>${item.name}</h3>
+                <p>${priceText}</p>
+                <button onclick="addToCart('${item.name}')">Ajouter</button>
             </div>`;
     });
 }
 
-function addToCart(name, price) {
-    let priceValue = parseInt(price.replace(/[^0-9]/g, ''));
-    cart.push({ name, price: priceValue });
-    alert(name + " ajouté !");
-}
-
-function showCart() {
-    let itemsDiv = document.getElementById('cart-items');
-    let total = 0;
-    itemsDiv.innerHTML = '';
-    cart.forEach(item => {
-        itemsDiv.innerHTML += `<p>${item.name} - ${item.price} DA</p>`;
-        total += item.price;
-    });
-    document.getElementById('cart-total').innerText = total;
-    document.getElementById('cart-modal').style.display = 'block';
-}
-
-function sendOrderWhatsApp() {
-    let phone = document.getElementById('customer-phone').value;
-    let address = document.getElementById('customer-address').value;
-    if(!phone || !address) { alert("Veuillez remplir téléphone et adresse!"); return; }
-    let msg = `Commande Pizzeria Smile:%0A`;
-    cart.forEach(item => msg += `- ${item.name}%0A`);
-    window.open(`https://wa.me/213549290971?text=${msg}%0ATéléphone: ${phone}%0AAdresse: ${address}`, '_blank');
-}
-
-window.onload = () => { filterMenu('pizzas'); };
+function addToCart(name) { cart.push(name); document.getElementById('cart-count').innerText = cart.length; alert(name + " ajouté !"); }
+function showCart() { document.getElementById('cart-items').innerHTML = cart.join(', '); document.getElementById('modal').style.display = 'block'; }
+function sendWhatsApp() { window.open(`https://wa.me/213549290971?text=Commande: ${cart.join(', ')}. Client: ${document.getElementById('name').value}, Addr: ${document.getElementById('address').value}`); }

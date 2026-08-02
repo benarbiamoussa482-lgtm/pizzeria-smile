@@ -3,47 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Smile</title>
+    <title>Pizzeria Smile | Commande</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <div class="container header-container">
-            <h2>PIZZERIA SMILE</h2>
-            <div class="cart-icon" onclick="showCart()" style="cursor:pointer;">
+        <div class="header-container">
+            <h2>SMILE <span style="color:#ff9800;">PIZZA</span></h2>
+            <div class="cart-icon" onclick="showCart()" style="cursor:pointer; font-size: 1.5em;">
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
-    </header><head>
-    <link rel="stylesheet" href="style.css">
-</head>
+    </header>
 
+    <div class="categories">
+        <div class="category-card active" onclick="filterMenu('pizzas')"><i class="fa-solid fa-pizza-slice"></i><p>PIZZAS</p></div>
+        <div class="category-card" onclick="filterMenu('sandwichs')"><i class="fa-solid fa-hotdog"></i><p>SANDWICHS</p></div>
+        <div class="category-card" onclick="filterMenu('burgers')"><i class="fa-solid fa-burger"></i><p>BURGERS</p></div>
+        <div class="category-card" onclick="filterMenu('tacos')"><i class="fa-solid fa-burrito"></i><p>TACOS</p></div>
+        <div class="category-card" onclick="filterMenu('gratines')"><i class="fa-solid fa-bowl-food"></i><p>GRATINES</p></div>
+        <div class="category-card" onclick="filterMenu('poutine')"><i class="fa-solid fa-cheese"></i><p>POUTINE</p></div>
+        <div class="category-card" onclick="filterMenu('plats')"><i class="fa-solid fa-utensils"></i><p>PLATS</p></div>
+        <div class="category-card" onclick="filterMenu('salades')"><i class="fa-solid fa-leaf"></i><p>SALADES</p></div>
+    </div>
 
-    <section class="categories container">
-        <div class="category-card active" onclick="filterMenu('pizzas')"><i class="fa-solid fa-pizza-slice"></i><h3>PIZZAS</h3></div>
-        <div class="category-card" onclick="filterMenu('sandwichs')"><i class="fa-solid fa-hotdog"></i><h3>SANDWICHS</h3></div>
-        <div class="category-card" onclick="filterMenu('burgers')"><i class="fa-solid fa-burger"></i><h3>BURGERS</h3></div>
-        <div class="category-card" onclick="filterMenu('tacos')"><i class="fa-solid fa-burrito"></i><h3>TACOS</h3></div>
-        <div class="category-card" onclick="filterMenu('gratines')"><i class="fa-solid fa-bowl-food"></i><h3>GRATINES</h3></div>
-        <div class="category-card" onclick="filterMenu('poutine')"><i class="fa-solid fa-cheese"></i><h3>POUTINE</h3></div>
-        <div class="category-card" onclick="filterMenu('plats')"><i class="fa-solid fa-utensils"></i><h3>PLATS</h3></div>
-        <div class="category-card" onclick="filterMenu('salades')"><i class="fa-solid fa-leaf"></i><h3>SALADES</h3></div>
-    </section>
+    <div id="menu-container" class="menu-container"></div>
 
-    <section id="menu" class="menu-section">
-        <div class="container" id="menu-container"></div>
-    </section>
-
-    <!-- نافذة السلة -->
     <div id="cart-modal">
-        <h3>Votre Panier</h3>
+        <h2 style="text-align:center;">VOTRE PANIER</h2>
         <div id="cart-items"></div>
-        <p>Total: <span id="cart-total">0</span> DA</p>
+        <div style="font-size: 1.2em; text-align:center; margin: 20px 0;">Total: <span id="cart-total">0</span> DA</div>
         <input type="text" id="customer-phone" placeholder="Numéro de téléphone">
         <input type="text" id="customer-address" placeholder="Adresse de livraison">
-        <button class="btn-confirm" onclick="sendOrderWhatsApp()">CONFIRMER</button>
+        <button class="btn-confirm" onclick="sendOrderWhatsApp()">CONFIRMER LA COMMANDE</button>
         <button class="btn-close" onclick="document.getElementById('cart-modal').style.display='none'">Fermer</button>
     </div>
 

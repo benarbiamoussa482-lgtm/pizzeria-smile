@@ -157,3 +157,11 @@ window.onload = () => {
         firstCategory.classList.add('active');
     }
 };
+// تفعيل القائمة الجانبية (Mobile Menu)
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const nav = document.querySelector('nav');
+
+mobileMenuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+

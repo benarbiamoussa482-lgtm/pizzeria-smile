@@ -1,4 +1,12 @@
-.item-card { 
+body { font-family: 'Poppins', sans-serif; background: #fdfbf7; margin: 0; }
+header { padding: 20px; display: flex; justify-content: space-between; align-items: center; background: white; }
+.hero img { width: 90%; max-width: 400px; display: block; margin: 20px auto; border-radius: 50%; height: 300px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.categories-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+.cat-card { background: white; padding: 30px 10px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); font-weight: bold; cursor: pointer; transition: 0.3s; }
+.cat-card:hover { transform: scale(1.05); background: #ffcc00; }
+.menu-banner { text-align: center; padding: 40px; background: white; margin-top: 20px; }
+.btn-all { background: #ffcc00; border: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; cursor: 
+item-card { 
     background: white; 
     padding: 15px; 
     margin: 10px; 

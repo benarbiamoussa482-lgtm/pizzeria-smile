@@ -1,116 +1,142 @@
 const menu = {
   pizzas: [
-    { name: "Pizza Marguerite", prices: { M: "250,00DA", L: "500,00DA", XL: "1000,00DA" } },
-    { name: "Pizza Royale", prices: { M: "350,00DA", L: "700,00DA", XL: "1300,00DA" } },
-    { name: "Pizza Viande", prices: { M: "400,00DA", L: "800,00DA", XL: "1500,00DA" } },
-    { name: "Pizza Poulet", prices: { M: "450,00DA", L: "900,00DA", XL: "1800,00DA" } },
-    { name: "Pizza Sicilienne", prices: { M: "500,00DA", L: "1000,00DA", XL: "1900,00DA" } },
-    { name: "Pizza Végétarien", prices: { M: "500,00DA", L: "1000,00DA", XL: "1900,00DA" } },
-    { name: "Pizza Napolliaine", prices: { M: "550,00DA", L: "1100,00DA", XL: "2100,00DA" } },
-    { name: "Pizza Romaine", prices: { M: "600,00DA", L: "1200,00DA", XL: "2200,00DA" } },
-    { name: "Pizza Boisé", prices: { M: "650,00DA", L: "1300,00DA", XL: "2300,00DA" } },
-    { name: "Pizza 4 Saison", prices: { M: "700,00DA", L: "1400,00DA", XL: "2400,00DA" } },
-    { name: "Pizza 4 Fromage", prices: { M: "700,00DA", L: "1400,00DA", XL: "2400,00DA" } },
-    { name: "Pizza Compioné", prices: { M: "650,00DA", L: "1300,00DA", XL: "2400,00DA" } },
-    { name: "Pizza Chef", prices: { M: "700,00DA", L: "1400,00DA", XL: "2500,00DA" } },
-    { name: "Pizza Fumée", prices: { M: "700,00DA", L: "1400,00DA", XL: "2600,00DA" } },
-    { name: "Pizza Smile", prices: { M: "800,00DA", L: "1600,00DA", XL: "2600,00DA" } },
-    { name: "Pizza Couvert", prices: { M: "800,00DA", L: "1600,00DA" } },
-    { name: "Pizza Venesia", prices: { M: "900,00DA", L: "1800,00DA" } },
-    { name: "Pizza Capriccioza", prices: { M: "1000,00DA", L: "1900,00DA" } },
-    { name: "Pizza Crevette", prices: { M: "1000,00DA", L: "2000,00DA" } }
-  ],
-  plats: [
-    { name: "Plat Spécial", price: "600,00DA" },
-    { name: "Plat Kabab", price: "600,00DA" },
-    { name: "Plat Mariné", price: "650,00DA" },
-    { name: "Plat Kebda", price: "700,00DA" },
-    { name: "Plat à la Crème", price: "700,00DA" },
-    { name: "Plat Crispé", price: "800,00DA" },
-    { name: "Plat Mélange", price: "2000,00DA" }
+    { name: "Pizza Marguerite", prices: { M: 250, L: 500, XL: 1000 } },
+    { name: "Pizza Royale", prices: { M: 350, L: 700, XL: 1300 } },
+    { name: "Pizza Viande", prices: { M: 400, L: 800, XL: 1500 } },
+    { name: "Pizza Poulet", prices: { M: 450, L: 900, XL: 1800 } },
+    { name: "Pizza Sicilienne", prices: { M: 500, L: 1000, XL: 1900 } },
+    { name: "Pizza Végétarien", prices: { M: 500, L: 1000, XL: 1900 } },
+    { name: "Pizza Napolliaine", prices: { M: 550, L: 1100, XL: 2100 } },
+    { name: "Pizza Romaine", prices: { M: 600, L: 1200, XL: 2200 } },
+    { name: "Pizza Boisé", prices: { M: 650, L: 1300, XL: 2300 } },
+    { name: "Pizza 4 Saison", prices: { M: 700, L: 1400, XL: 2400 } },
+    { name: "Pizza 4 Fromage", prices: { M: 700, L: 1400, XL: 2400 } },
+    { name: "Pizza Compioné", prices: { M: 650, L: 1300, XL: 2400 } },
+    { name: "Pizza Chef", prices: { M: 700, L: 1400, XL: 2500 } },
+    { name: "Pizza Fumée", prices: { M: 700, L: 1400, XL: 2600 } },
+    { name: "Pizza Smile", prices: { M: 800, L: 1600, XL: 2600 } },
+    { name: "Pizza Couvert", prices: { M: 800, L: 1600 } },
+    { name: "Pizza Venesia", prices: { M: 900, L: 1800 } },
+    { name: "Pizza Capriccioza", prices: { M: 1000, L: 1900 } },
+    { name: "Pizza Crevette", prices: { M: 1000, L: 2000 } }
   ],
   sandwichs: [
-    { name: "Poulet hachée", price: "200,00DA" },
-    { name: "Spécial", price: "250,00DA" },
-    { name: "Spécial Doublé", price: "350,00DA" },
-    { name: "Chawarma", price: "350,00DA" },
-    { name: "Mariné", price: "350,00DA" },
-    { name: "Viande Haché", price: "350,00DA" },
-    { name: "Libané", price: "400,00DA" },
-    { name: "Kebda", price: "400,00DA" },
-    { name: "Escalope à la crème", price: "450,00DA" },
-    { name: "Mexicain", price: "450,00DA" },
-    { name: "Smile", price: "450,00DA" },
-    { name: "Crispy", price: "550,00DA" },
-    { name: "Chessy Chiken", price: "600,00DA" },
-    { name: "Mortadella", price: "650,00DA" },
-    { name: "Chiken & Crevette", price: "650,00DA" },
-    { name: "Chessy Smile", price: "650,00DA" }
+    { name: "Poulet hachée", price: 200 },
+    { name: "Spécial", price: 250 },
+    { name: "Spécial Doublé", price: 350 },
+    { name: "Chawarma", price: 350 },
+    { name: "Mariné", price: 350 },
+    { name: "Viande Haché", price: 350 },
+    { name: "Libané", price: 400 },
+    { name: "Kebda", price: 400 },
+    { name: "Escalope à la crème", price: 450 },
+    { name: "Mexicain", price: 450 },
+    { name: "Smile", price: 450 },
+    { name: "Crispy", price: 550 },
+    { name: "Chessy Chiken", price: 600 },
+    { name: "Mortadella", price: 650 },
+    { name: "Chiken & Crevette", price: 650 },
+    { name: "Chessy Smile", price: 650 }
   ],
   tacos: [
-    { name: "Tacos Poulet", prices: { M: "500,00DA", L: "650,00DA" } },
-    { name: "Tacos Chawarma", prices: { M: "500,00DA", L: "650,00DA" } },
-    { name: "Tacos Viande", prices: { M: "600,00DA", L: "750,00DA" } },
-    { name: "Tacos Mixte", prices: { M: "650,00DA", L: "800,00DA" } },
-    { name: "Tacos Crispé", prices: { M: "650,00DA", L: "800,00DA" } },
-    { name: "Gratiné", price: "100,00DA" }
+    { name: "Tacos Poulet", prices: { M: 500, L: 650 } },
+    { name: "Tacos Chawarma", prices: { M: 500, L: 650 } },
+    { name: "Tacos Viande", prices: { M: 600, L: 750 } },
+    { name: "Tacos Mixte", prices: { M: 650, L: 800 } },
+    { name: "Tacos Crispé", prices: { M: 650, L: 800 } },
+    { name: "Gratiné", price: 100 }
   ],
   burger: [
-    { name: "Burger", price: "250,00DA" },
-    { name: "Cheese Burger", price: "350,00DA" },
-    { name: "Big Burger", price: "400,00DA" },
-    { name: "Crispy Burger", price: "450,00DA" },
-    { name: "Burger mixte", price: "550,00DA" }
+    { name: "Burger", price: 250 },
+    { name: "Cheese Burger", price: 350 },
+    { name: "Big Burger", price: 400 },
+    { name: "Crispy Burger", price: 450 },
+    { name: "Burger mixte", price: 550 }
+  ],
+  plats: [
+    { name: "Plat Spécial", price: 600 },
+    { name: "Plat Kabab", price: 600 },
+    { name: "Plat Mariné", price: 650 },
+    { name: "Plat Kebda", price: 700 },
+    { name: "Plat à la Crème", price: 700 },
+    { name: "Plat Crispé", price: 800 },
+    { name: "Plat Mélange", price: 2000 }
   ],
   gratines: [
-    { name: "Gratine poulet", price: "500,00DA" },
-    { name: "Gratine viande", price: "600,00DA" },
-    { name: "Gratine Mixte", price: "650,00DA" }
-  ],
-  salade: [
-    { name: "Salade Smile", price: "600,00DA" }
+    { name: "Gratiné Poulet", price: 500 },
+    { name: "Gratiné Viande", price: 600 },
+    { name: "Gratiné Mixte", price: 650 }
   ],
   poutine: [
-    { name: "Poulet pané", price: "650,00DA" },
-    { name: "Mariné", price: "650,00DA" },
-    { name: "Mixte", price: "800,00DA" },
-    { name: "Chiken & Crevette", price: "800,00DA" }
+    { name: "Poutine Poulet pané", price: 650 },
+    { name: "Poutine Mariné", price: 650 },
+    { name: "Poutine Mixte", price: 800 },
+    { name: "Poutine Chiken & Crevette", price: 800 }
   ],
-  supplements: {
-      price: "150,00DA"
-  }
+  salade: [
+    { name: "Salade Smile", price: 600 }
+  ]
 };
 
 let cart = [];
 
-// دالة العرض (تأكد أن القائمة كاملة في الـ HTML)
-function renderMenu() {
-    const app = document.getElementById('menu-app');
-    app.innerHTML = "";
+function render() {
+    const container = document.getElementById('menu-container');
+    container.innerHTML = "";
     for (let cat in menu) {
-        if (cat === "supplements") continue;
-        app.innerHTML += `<h2>${cat.toUpperCase()}</h2><div class="grid" id="${cat}"></div>`;
+        container.innerHTML += `<h2>${cat.toUpperCase()}</h2>`;
         menu[cat].forEach(item => {
-            let priceText = item.price ? item.price : Object.entries(item.prices).map(([s, p]) => `${s}: ${p}`).join(' | ');
-            document.getElementById(cat).innerHTML += `
+            let options = "";
+            if (item.prices) {
+                options = `<select id="size-${item.name.replace(/\s+/g, '-')}">${Object.keys(item.prices).map(s => `<option value="${s}">${s} (${item.prices[s]} DA)</option>`).join('')}</select>`;
+            }
+            container.innerHTML += `
                 <div class="card">
                     <h3>${item.name}</h3>
-                    <p>${priceText}</p>
-                    <button onclick="addToCart('${item.name}')">إضافة</button>
+                    ${options}
+                    <button onclick="add('${item.name}')">إضافة</button>
                 </div>`;
         });
     }
 }
 
-function addToCart(name) {
-    cart.push(name);
+function add(name) {
+    let item;
+    for(let cat in menu) {
+        item = menu[cat].find(i => i.name === name);
+        if(item) break;
+    }
+    
+    let price = item.price;
+    let size = "";
+    if (item.prices) {
+        size = document.getElementById(`size-${name.replace(/\s+/g, '-')}`).value;
+        price = item.prices[size];
+    }
+    
+    cart.push({name, size, price});
     document.getElementById('cart-count').innerText = cart.length;
+    alert(name + " تم الإضافة للسلة!");
 }
 
-function sendToWhatsApp() {
-    // رقم الواتساب المحدث: 0779805210
-    let msg = "أريد طلب: " + cart.join(", ");
-    window.location.href = "https://wa.me/213779805210?text=" + encodeURIComponent(msg);
+function toggleCart() {
+    const modal = document.getElementById('cart-modal');
+    modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+    if(modal.style.display === 'block') {
+        let html = cart.map(i => `<p>${i.name} ${i.size ? '('+i.size+')' : ''} - ${i.price} DA</p>`).join('');
+        document.getElementById('cart-items').innerHTML = html || "السلة فارغة";
+        let total = cart.reduce((sum, i) => sum + i.price, 0);
+        document.getElementById('cart-total').innerText = "Total: " + total + " DA";
+    }
 }
 
-renderMenu();
+function sendWhatsApp() {
+    let name = document.getElementById('client-name').value;
+    let addr = document.getElementById('client-address').value;
+    let items = cart.map(i => i.name + (i.size ? " ("+i.size+")" : "")).join(', ');
+    let total = document.getElementById('cart-total').innerText;
+    let msg = `طلبي هو: ${items}. ${total}. الاسم: ${name}, العنوان: ${addr}`;
+    window.location.href = `https://wa.me/213779805210?text=${encodeURIComponent(msg)}`;
+}
+
+render();

@@ -1,94 +1,192 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <style>
-        :root { --primary: #000; --accent: #FFD700; --bg: #1a1a1a; --text: #fff; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); padding-bottom: 250px; }
-        .section-title { color: var(--accent); font-size: 1.5em; border-bottom: 2px solid var(--accent); margin: 30px 20px 15px; padding-bottom: 5px; text-transform: uppercase; }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 20px; }
-        .item-card { background: #252525; padding: 15px; border-radius: 8px; border: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
-        .btn-order { background: var(--accent); color: #000; border: none; padding: 5px 12px; border-radius: 4px; font-weight: bold; cursor: pointer; }
-        #fixed-cart { position: fixed; bottom: 0; width: 100%; background: #000; padding: 20px; border-top: 3px solid var(--accent); text-align: center; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Smile - Le goût qui vous fait sourire</title>
+    <!-- استدعاء خطوط جوجل (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- استدعاء أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="section-title">Nos Pizzas (M / L / XL)</div>
-    <div class="menu-grid">
-        <div class="item-card"><span>Margueritte</span><span>250 / 500 / 1000 DA</span><button class="btn-order" onclick="add('Margueritte', 250)">+</button></div>
-        <div class="item-card"><span>Royale</span><span>350 / 700 / 1300 DA</span><button class="btn-order" onclick="add('Royale', 350)">+</button></div>
-        <div class="item-card"><span>Viande</span><span>400 / 800 / 1500 DA</span><button class="btn-order" onclick="add('Viande', 400)">+</button></div>
-        <div class="item-card"><span>Poulet</span><span>450 / 900 / 1800 DA</span><button class="btn-order" onclick="add('Poulet', 450)">+</button></div>
-        <div class="item-card"><span>Sicilienne</span><span>500 / 1000 / 1900 DA</span><button class="btn-order" onclick="add('Sicilienne', 500)">+</button></div>
-        <div class="item-card"><span>Végétarien</span><span>500 / 1000 / 1900 DA</span><button class="btn-order" onclick="add('Végétarien', 500)">+</button></div>
-        <div class="item-card"><span>Napollaine</span><span>550 / 1100 / 2100 DA</span><button class="btn-order" onclick="add('Napollaine', 550)">+</button></div>
-        <div class="item-card"><span>Romaine</span><span>600 / 1200 / 2200 DA</span><button class="btn-order" onclick="add('Romaine', 600)">+</button></div>
-        <div class="item-card"><span>Boisé</span><span>650 / 1300 / 2300 DA</span><button class="btn-order" onclick="add('Boisé', 650)">+</button></div>
-        <div class="item-card"><span>4 Saison</span><span>700 / 1400 / 2400 DA</span><button class="btn-order" onclick="add('4 Saison', 700)">+</button></div>
-        <div class="item-card"><span>4 Fromage</span><span>700 / 1400 / 2400 DA</span><button class="btn-order" onclick="add('4 Fromage', 700)">+</button></div>
-        <div class="item-card"><span>Campioné</span><span>650 / 1300 / 2400 DA</span><button class="btn-order" onclick="add('Campioné', 650)">+</button></div>
-        <div class="item-card"><span>Chef</span><span>700 / 1400 / 2500 DA</span><button class="btn-order" onclick="add('Chef', 700)">+</button></div>
-        <div class="item-card"><span>Fumée</span><span>700 / 1400 / 2600 DA</span><button class="btn-order" onclick="add('Fumée', 700)">+</button></div>
-        <div class="item-card"><span>Smile</span><span>800 / 1600 / 2600 DA</span><button class="btn-order" onclick="add('Smile', 800)">+</button></div>
-        <div class="item-card"><span>Couvert</span><span>800 / 1600 DA</span><button class="btn-order" onclick="add('Couvert', 800)">+</button></div>
-        <div class="item-card"><span>Venesia</span><span>900 / 1800 DA</span><button class="btn-order" onclick="add('Venesia', 900)">+</button></div>
-        <div class="item-card"><span>Capriccioza</span><span>1000 / 1900 DA</span><button class="btn-order" onclick="add('Capriccioza', 1000)">+</button></div>
-        <div class="item-card"><span>Crevette</span><span>1000 / 2000 DA</span><button class="btn-order" onclick="add('Crevette', 1000)">+</button></div>
-    </div>
+    <!-- شريط التنقل (Header) -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h2><span>PIZZERIA</span><br>SMILE</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#accueil" class="active">ACCUEIL</a></li>
+                    <li><a href="#menu">MENU</a></li>
+                    <li><a href="#promotions">PROMOTIONS</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </div>
+            <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
 
-    <div class="section-title">Sandwichs</div>
-    <div class="menu-grid">
-        <div class="item-card"><span>Poulet haché</span><span>200 DA</span><button class="btn-order" onclick="add('Sandwich Poulet', 200)">+</button></div>
-        <div class="item-card"><span>Spécial</span><span>250 DA</span><button class="btn-order" onclick="add('Sandwich Spécial', 250)">+</button></div>
-        <div class="item-card"><span>Spécial Doublé</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Spécial Doublé', 350)">+</button></div>
-        <div class="item-card"><span>Chawarma</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Chawarma', 350)">+</button></div>
-        <div class="item-card"><span>Mariné</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Mariné', 350)">+</button></div>
-        <div class="item-card"><span>Viande Hachée</span><span>350 DA</span><button class="btn-order" onclick="add('Sandwich Viande', 350)">+</button></div>
-        <div class="item-card"><span>Libané</span><span>400 DA</span><button class="btn-order" onclick="add('Sandwich Libané', 400)">+</button></div>
-        <div class="item-card"><span>Kebda</span><span>400 DA</span><button class="btn-order" onclick="add('Sandwich Kebda', 400)">+</button></div>
-        <div class="item-card"><span>Escalope Crème</span><span>450 DA</span><button class="btn-order" onclick="add('Sandwich Escalope', 450)">+</button></div>
-        <div class="item-card"><span>Mexicain</span><span>450 DA</span><button class="btn-order" onclick="add('Sandwich Mexicain', 450)">+</button></div>
-        <div class="item-card"><span>Smile</span><span>450 DA</span><button class="btn-order" onclick="add('Sandwich Smile', 450)">+</button></div>
-        <div class="item-card"><span>Crispy</span><span>550 DA</span><button class="btn-order" onclick="add('Sandwich Crispy', 550)">+</button></div>
-        <div class="item-card"><span>Chessy Chiken</span><span>600 DA</span><button class="btn-order" onclick="add('Sandwich Chessy Chiken', 600)">+</button></div>
-        <div class="item-card"><span>Mortadella</span><span>650 DA</span><button class="btn-order" onclick="add('Sandwich Mortadella', 650)">+</button></div>
-        <div class="item-card"><span>Chiken & Crevette</span><span>650 DA</span><button class="btn-order" onclick="add('Sandwich Chiken/Crevette', 650)">+</button></div>
-        <div class="item-card"><span>Chessy Smile</span><span>650 DA</span><button class="btn-order" onclick="add('Sandwich Chessy Smile', 650)">+</button></div>
-    </div>
+    <!-- القسم الرئيسي (Hero Section) -->
+    <section id="accueil" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>LE GOÛT<br>QUI VOUS FAIT <span class="highlight">SOURIRE</span></h1>
+                <p>Pizzas, Burgers, Sandwichs et plus<br>livrés chauds chez vous !</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-motorcycle"></i> COMMANDER</a>
+                    <a href="#menu" class="btn btn-secondary"><i class="fa-regular fa-eye"></i> VOIR LE MENU</a>
+                </div>
+                <div class="delivery-info">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div>
+                        <strong>LIVRAISON RAPIDE</strong>
+                        <span>à votre porte</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- صورة بيتزا تعبيرية (يمكنك استبدالها بصورة البيتزا الخاصة بك) -->
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pizza Smile">
+            </div>
+        </div>
+    </section>
 
-    <div class="section-title">Plats, Gratins, Burgers & Salades</div>
-    <div class="menu-grid">
-        <div class="item-card"><span>Plat Spécial</span><span>600 DA</span><button class="btn-order" onclick="add('Plat Spécial', 600)">+</button></div>
-        <div class="item-card"><span>Plat Kabab</span><span>600 DA</span><button class="btn-order" onclick="add('Plat Kabab', 600)">+</button></div>
-        <div class="item-card"><span>Plat Mariné</span><span>650 DA</span><button class="btn-order" onclick="add('Plat Mariné', 650)">+</button></div>
-        <div class="item-card"><span>Plat Kebda</span><span>700 DA</span><button class="btn-order" onclick="add('Plat Kebda', 700)">+</button></div>
-        <div class="item-card"><span>Plat Crème</span><span>700 DA</span><button class="btn-order" onclick="add('Plat Crème', 700)">+</button></div>
-        <div class="item-card"><span>Plat Crispé</span><span>800 DA</span><button class="btn-order" onclick="add('Plat Crispé', 800)">+</button></div>
-        <div class="item-card"><span>Plat Mélange</span><span>2000 DA</span><button class="btn-order" onclick="add('Plat Mélange', 2000)">+</button></div>
-        <div class="item-card"><span>Gratin Poulet</span><span>500 DA</span><button class="btn-order" onclick="add('Gratin Poulet', 500)">+</button></div>
-        <div class="item-card"><span>Gratin Viande</span><span>600 DA</span><button class="btn-order" onclick="add('Gratin Viande', 600)">+</button></div>
-        <div class="item-card"><span>Poutine Pané</span><span>650 DA</span><button class="btn-order" onclick="add('Poutine Pané', 650)">+</button></div>
-        <div class="item-card"><span>Poutine Mixte</span><span>800 DA</span><button class="btn-order" onclick="add('Poutine Mixte', 800)">+</button></div>
-        <div class="item-card"><span>Salade Smile</span><span>600 DA</span><button class="btn-order" onclick="add('Salade Smile', 600)">+</button></div>
-        <div class="item-card"><span>Cheese Burger</span><span>350 DA</span><button class="btn-order" onclick="add('Burger Cheese', 350)">+</button></div>
-        <div class="item-card"><span>Crispy Burger</span><span>450 DA</span><button class="btn-order" onclick="add('Burger Crispy', 450)">+</button></div>
-    </div>
+    <!-- تصنيفات القائمة (Categories) -->
+    <section class="categories container">
+        <div class="category-card active" onclick="filterMenu('pizzas')">
+            <i class="fa-solid fa-pizza-slice"></i>
+            <div>
+                <h3>PIZZAS</h3>
+                <span>Délicieuses</span>
+            </div>
+        </div>
+        <div class="category-card" onclick="filterMenu('sandwichs')">
+            <i class="fa-solid fa-hotdog"></i>
+            <div>
+                <h3>SANDWICHS</h3>
+                <span>Frais & gourmands</span>
+            </div>
+        </div>
+        <div class="category-card" onclick="filterMenu('burgers')">
+            <i class="fa-solid fa-burger"></i>
+            <div>
+                <h3>BURGERS</h3>
+                <span>Juteux & savoureux</span>
+            </div>
+        </div>
+        <div class="category-card" onclick="filterMenu('tacos')">
+            <i class="fa-solid fa-burrito"></i>
+            <div>
+                <h3>TACOS</h3>
+                <span>Garnis</span>
+            </div>
+        </div>
+        <div class="category-card" onclick="filterMenu('gratines')">
+            <i class="fa-solid fa-bowl-food"></i>
+            <div>
+                <h3>GRATINES</h3>
+                <span>Chauds & fondants</span>
+            </div>
+        </div>
+    </section>
 
-    <div id="fixed-cart">
-        <div id="cart-content">Panier vide</div>
-        <div id="total-price" style="margin: 10px 0; color: var(--accent);">Total: 0 DA</div>
-        <a href="#" id="wa-link" style="color: #25D366; text-decoration: none; font-weight: bold;">Commander par WhatsApp 💬</a>
-    </div>
+    <!-- القائمة (Menu Section) -->
+    <section id="menu" class="menu-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>NOTRE <span class="highlight">MENU</span></h2>
+                <a href="#" class="btn btn-primary btn-sm">VOIR TOUT LE MENU <i class="fa-solid fa-bars"></i></a>
+            </div>
+            
+            <div class="menu-grid" id="menu-container">
+                <!-- سيتم حقن المنتجات هنا بواسطة JavaScript -->
+            </div>
+        </div>
+    </section>
 
-    <script>
-        let cart = []; let total = 0;
-        function add(n, p) {
-            cart.push(n); total += p;
-            document.getElementById('cart-content').innerText = cart.join(', ');
-            document.getElementById('total-price').innerText = "Total: " + total + " DA";
-            document.getElementById('wa-link').href = "https://wa.me/213775077197?text=Commande:%0A" + cart.join('%0A') + "%0A%0ATotal: " + total + " DA";
-        }
-    </script>
+    <!-- كيف يعمل (How it works) -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>COMMENT ÇA MARCHE ?</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                    <div class="step-text"><strong>1</strong> Choisissez vos produits</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <div class="step-text"><strong>2</strong> Confirmez votre commande</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                    <div class="step-text"><strong>3</strong> Nous livrons chez vous</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-regular fa-face-smile"></i></div>
+                    <div class="step-text"><strong>4</strong> Dégustez et souriez :)</div>
+                </div>
+            </div>
+            <div class="contact-card">
+                <h3>APPELEZ-NOUS</h3>
+                <p><i class="fa-solid fa-phone"></i> 0775077197</p>
+                <p><i class="fa-brands fa-whatsapp"></i> 0549290971</p>
+                <a href="https://wa.me/213549290971" class="btn btn-dark" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> COMMANDER SUR WHATSAPP
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر (Footer) -->
+    <footer id="contact">
+        <div class="container footer-container">
+            <div class="footer-item">
+                <i class="fa-solid fa-box-open"></i>
+                <div>
+                    <h4>PRODUITS FRAIS</h4>
+                    <p>Ingrédients de qualité</p>
+                </div>
+            </div>
+            <div class="footer-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <h4>LIVRAISON RAPIDE</h4>
+                    <p>Livraison à domicile</p>
+                </div>
+            </div>
+            <div class="footer-item">
+                <i class="fa-solid fa-circle-dollar-to-slot"></i>
+                <div>
+                    <h4>MEILLEURS PRIX</h4>
+                    <p>Rapport qualité/prix</p>
+                </div>
+            </div>
+            <div class="footer-item">
+                <i class="fa-solid fa-headset"></i>
+                <div>
+                    <h4>SERVICE CLIENT</h4>
+                    <p>Toujours à votre écoute</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PIZZERIA SMILE - Tous droits réservés.</p>
+            <div class="socials">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

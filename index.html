@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <title>Pizzeria Smile</title>
@@ -7,23 +7,29 @@
 </head>
 <body>
     <header>
-        <div class="logo">PIZZERIA <span>SMILE</span></div>
-        <button class="cart-btn" onclick="toggleCart()">🛒 Panier (<span id="cart-count">0</span>)</button>
+        <div class="logo">PIZZERIA <b>SMILE</b></div>
+        <button class="cart-btn" onclick="toggleCart()">🛒 0</button>
     </header>
 
-    <div id="menu-container"></div>
-
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <h2>Votre Panier</h2>
-            <div id="cart-items"></div>
-            <h3 id="cart-total">Total: 0 DA</h3>
-            <input type="text" id="client-name" placeholder="Votre Nom">
-            <input type="text" id="client-address" placeholder="Votre Adresse">
-            <button onclick="sendWhatsApp()" class="btn-whatsapp">Commander sur WhatsApp</button>
-            <button onclick="toggleCart()">Fermer</button>
-        </div>
+    <div class="hero">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800" alt="Pizza">
     </div>
+
+    <!-- البطاقات التي طلبتها -->
+    <div class="categories-grid" id="main-grid">
+        <div class="cat-card" onclick="renderCategory('Pizzas')">🍕 Pizzas</div>
+        <div class="cat-card" onclick="renderCategory('Sandwichs')">🥪 Sandwichs</div>
+        <div class="cat-card" onclick="renderCategory('Tacos')">🌮 Tacos</div>
+        <div class="cat-card" onclick="renderCategory('Burger')">🍔 Burger</div>
+    </div>
+
+    <div class="menu-banner">
+        <h2>NOTRE MENU</h2>
+        <button class="btn-all" onclick="renderAll()">VOIR TOUT LE MENU</button>
+    </div>
+
+    <div id="content-area"></div>
+
     <script src="script.js"></script>
 </body>
 </html>

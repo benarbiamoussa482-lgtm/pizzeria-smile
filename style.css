@@ -1,3 +1,4 @@
+
 :root {
     --primary-color: #ffca08;
     --dark-color: #1a1a1a;
@@ -493,3 +494,28 @@ footer {
     .hero-content h1 { font-size: 3rem; }
     .steps-grid { flex-wrap: wrap; justify-content: center; }
 }
+/* تنسيق القائمة عند فتحها في الهاتف */
+@media (max-width: 768px) {
+    nav {
+        display: none; /* مخفية افتراضياً */
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        text-align: center;
+        z-index: 999;
+    }
+
+    nav.active {
+        display: block; /* تظهر عند إضافة كلاس active */
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+

@@ -3,215 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Smile - Le goût qui vous fait sourire</title>
-    <!-- استدعاء خطوط جوجل (Montserrat) -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- استدعاء أيقونات FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Pizzeria Smile</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- شريط التنقل (Header) -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <h2><span>PIZZERIA</span><br>SMILE</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#accueil" class="active">ACCUEIL</a></li>
-                    <li><a href="#menu">MENU</a></li>
-                    <li><a href="#promotions">PROMOTIONS</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
-            </nav>
-            <div class="cart-icon" onclick="showCart()" style="cursor:pointer;">⁠
-
+            <h2>PIZZERIA SMILE</h2>
+            <div class="cart-icon" onclick="showCart()" style="cursor:pointer;">
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-count">0</span>
-            </div>
-            <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
-        </div>
-    </header> 
-    <div class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
-
-
-    <!-- القسم الرئيسي (Hero Section) -->
-    <section id="accueil" class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <h1>LE GOÛT<br>QUI VOUS FAIT <span class="highlight">SOURIRE</span></h1>
-                <p>Pizzas, Burgers, Sandwichs et plus<br>livrés chauds chez vous !</p>
-                <div class="hero-buttons">
-                    <a href="#menu" class="btn btn-primary"><i class="fa-solid fa-motorcycle"></i> COMMANDER</a>
-                    <a href="#menu" class="btn btn-secondary"><i class="fa-regular fa-eye"></i> VOIR LE MENU</a>
-                </div>
-                <div class="delivery-info">
-                    <i class="fa-solid fa-truck-fast"></i>
-                    <div>
-                        <strong>LIVRAISON RAPIDE</strong>
-                        <span>à votre porte</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-image">
-                <!-- صورة بيتزا تعبيرية (يمكنك استبدالها بصورة البيتزا الخاصة بك) -->
-                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pizza Smile">
             </div>
         </div>
+    </header>
+
+    <section class="categories container">
+        <div class="category-card active" onclick="filterMenu('pizzas')"><i class="fa-solid fa-pizza-slice"></i><h3>PIZZAS</h3></div>
+        <div class="category-card" onclick="filterMenu('sandwichs')"><i class="fa-solid fa-hotdog"></i><h3>SANDWICHS</h3></div>
+        <div class="category-card" onclick="filterMenu('burgers')"><i class="fa-solid fa-burger"></i><h3>BURGERS</h3></div>
+        <div class="category-card" onclick="filterMenu('tacos')"><i class="fa-solid fa-burrito"></i><h3>TACOS</h3></div>
+        <div class="category-card" onclick="filterMenu('gratines')"><i class="fa-solid fa-bowl-food"></i><h3>GRATINES</h3></div>
+        <div class="category-card" onclick="filterMenu('poutine')"><i class="fa-solid fa-cheese"></i><h3>POUTINE</h3></div>
+        <div class="category-card" onclick="filterMenu('plats')"><i class="fa-solid fa-utensils"></i><h3>PLATS</h3></div>
+        <div class="category-card" onclick="filterMenu('salades')"><i class="fa-solid fa-leaf"></i><h3>SALADES</h3></div>
     </section>
 
-    <!-- تصنيفات القائمة (Categories) -->
-   <section class="categories container">
-    <div class="category-card active" onclick="filterMenu('pizzas')">
-        <i class="fa-solid fa-pizza-slice"></i>
-        <h3>PIZZAS</h3>
-    </div>
-    <div class="category-card" onclick="filterMenu('sandwichs')">
-        <i class="fa-solid fa-hotdog"></i>
-        <h3>SANDWICHS</h3>
-    </div>
-    <div class="category-card" onclick="filterMenu('burgers')">
-        <i class="fa-solid fa-burger"></i>
-        <h3>BURGERS</h3>
-    </div>
-    <div class="category-card" onclick="filterMenu('tacos')">
-        <i class="fa-solid fa-burrito"></i>
-        <h3>TACOS</h3>
-    </div>
-    <!-- هذه الأقسام الجديدة التي كانت مفقودة -->
-    <div class="category-card" onclick="filterMenu('gratines')">
-        <i class="fa-solid fa-bowl-food"></i>
-        <h3>GRATINES</h3>
-    </div>
-    <div class="category-card" onclick="filterMenu('poutine')">
-        <i class="fa-solid fa-cheese"></i>
-        <h3>POUTINE</h3>
-    </div>
-    <div class="category-card" onclick="filterMenu('plats')">
-        <i class="fa-solid fa-utensils"></i>
-        <h3>PLATS</h3>
-    </div>
-    <div class="category-card" onclick="filterMenu('salades')">
-        <i class="fa-solid fa-leaf"></i>
-        <h3>SALADES</h3>
-    </div>
-</section>
-
-
-    <!-- القائمة (Menu Section) -->
-    <section id="menu" class="menu-section bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2>NOTRE <span class="highlight">MENU</span></h2>
-                <a href="#" class="btn btn-primary btn-sm">VOIR TOUT LE MENU <i class="fa-solid fa-bars"></i></a>
-            </div>
-            
-            <div class="menu-grid" id="menu-container">
-                <!-- سيتم حقن المنتجات هنا بواسطة JavaScript -->
-            </div>
-        </div>
+    <section id="menu" class="menu-section">
+        <div class="container" id="menu-container"></div>
     </section>
 
-    <!-- كيف يعمل (How it works) -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2>COMMENT ÇA MARCHE ?</h2>
-            <div class="steps-grid">
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                    <div class="step-text"><strong>1</strong> Choisissez vos produits</div>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-clipboard-list"></i></div>
-                    <div class="step-text"><strong>2</strong> Confirmez votre commande</div>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
-                    <div class="step-text"><strong>3</strong> Nous livrons chez vous</div>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fa-regular fa-face-smile"></i></div>
-                    <div class="step-text"><strong>4</strong> Dégustez et souriez :)</div>
-                </div>
-            </div>
-            <div class="contact-card">
-                <h3>APPELEZ-NOUS</h3>
-                <p><i class="fa-solid fa-phone"></i> 0775077197</p>
-                <p><i class="fa-brands fa-whatsapp"></i> 0549290971</p>
-                <a href="https://wa.me/213549290971" class="btn btn-dark" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> COMMANDER SUR WHATSAPP
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- الفوتر (Footer) -->
-    <footer id="contact">
-        <div class="container footer-container">
-            <div class="footer-item">
-                <i class="fa-solid fa-box-open"></i>
-                <div>
-                    <h4>PRODUITS FRAIS</h4>
-                    <p>Ingrédients de qualité</p>
-                </div>
-            </div>
-            <div class="footer-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <div>
-                    <h4>LIVRAISON RAPIDE</h4>
-                    <p>Livraison à domicile</p>
-                </div>
-            </div>
-            <div class="footer-item">
-                <i class="fa-solid fa-circle-dollar-to-slot"></i>
-                <div>
-                    <h4>MEILLEURS PRIX</h4>
-                    <p>Rapport qualité/prix</p>
-                </div>
-            </div>
-            <div class="footer-item">
-                <i class="fa-solid fa-headset"></i>
-                <div>
-                    <h4>SERVICE CLIENT</h4>
-                    <p>Toujours à votre écoute</p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 PIZZERIA SMILE - Tous droits réservés.</p>
-            <div class="socials">
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
+    <!-- نافذة السلة -->
+    <div id="cart-modal">
+        <h3>Votre Panier</h3>
+        <div id="cart-items"></div>
+        <p>Total: <span id="cart-total">0</span> DA</p>
+        <input type="text" id="customer-phone" placeholder="Numéro de téléphone">
+        <input type="text" id="customer-address" placeholder="Adresse de livraison">
+        <button class="btn-confirm" onclick="sendOrderWhatsApp()">CONFIRMER</button>
+        <button class="btn-close" onclick="document.getElementById('cart-modal').style.display='none'">Fermer</button>
+    </div>
 
     <script src="script.js"></script>
-    <!-- نافذة السلة -->
-<div id="cart-modal" style="display:none; position:fixed; top:20%; left:10%; width:80%; background:#fff; padding:20px; border-radius:10px; z-index:1000; box-shadow:0 0 10px rgba(0,0,0,0.5);">
-    <h3>Votre Commande</h3>
-    <div id="cart-items"></div>
-    <p><strong>Total: <span id="cart-total">0</span> DA</strong></p>
-    <input type="text" id="customer-phone" placeholder="Numéro de téléphone" style="width:100%; margin:5px 0;">
-    <input type="text" id="customer-address" placeholder="Adresse de livraison" style="width:100%; margin:5px 0;">
-    <button onclick="sendOrderWhatsApp()" style="width:100%; padding:10px; background:#25d366; color:#fff; border:none;">CONFIRMER LA COMMANDE</button>
-    <button onclick="document.getElementById('cart-modal').style.display='none'">Fermer</button>
-</div>
-<!-- نافذة الطلب (الـ Modal) -->
-<div id="cart-modal" style="display:none; position:fixed; top:50px; left:5%; width:90%; background:#fff; padding:20px; border-radius:15px; z-index:1000; box-shadow:0 0 20px rgba(0,0,0,0.3);">
-    <h3 style="text-align:center;">Votre Panier</h3>
-    <div id="cart-items" style="max-height:200px; overflow-y:auto; margin-bottom:15px;"></div>
-    <p style="font-weight:bold; font-size:1.2em;">Total: <span id="cart-total">0</span> DA</p>
-    
-    <input type="text" id="customer-phone" placeholder="Numéro de téléphone" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd;">
-    <input type="text" id="customer-address" placeholder="Adresse de livraison" style="width:100%; padding:10px; margin:5px 0; border:1px solid #ddd;">
-    
-    <button onclick="sendOrderWhatsApp()" style="width:100%; padding:12px; background:#25d366; color:#fff; border:none; border-radius:5px; font-weight:bold;">CONFIRMER & COMMANDER</button>
-    <button onclick="document.getElementById('cart-modal').style.display='none'" style="width:100%; padding:10px; margin-top:10px; background:#ff4444; color:#fff; border:none; border-radius:5px;">Fermer</button>
-</div>
-
-</body><meta name="google-site-verification" content="-Sq_IX08zQ7O7QrpBoSCQF0o5pspR7eB4o4Ide6i_Z8" />
+</body>
 </html>

@@ -3,29 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Smile | Commande en ligne</title>
+    <title>Pizzeria Smile - Commande</title>
     <link rel="stylesheet" href="style.css">
+    <!-- استخدام خطوط عصرية -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
-        <div class="logo">PIZZERIA <span>SMILE</span></div>
-        <div class="cart-btn" onclick="showCart()">🛒 Panier (<span id="cart-count">0</span>)</div>
+        <div class="cart-container">
+            <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+        </div>
     </header>
 
-    <div class="menu-container" id="menu">
-        <!-- سيتم توليد الأقسام هنا بواسطة الجافا سكريبت -->
+    <div class="hero">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800" alt="Pizza">
     </div>
 
-    <div id="modal" class="modal">
+    <main id="menu-app">
+        <!-- الأصناف ستظهر هنا -->
+    </main>
+
+    <!-- نافذة السلة -->
+    <div id="cart-modal" class="modal">
         <div class="modal-content">
             <h2>Votre Panier</h2>
             <div id="cart-items"></div>
-            <input type="text" id="name" placeholder="Nom complet">
-            <input type="text" id="address" placeholder="Adresse">
-            <button onclick="sendWhatsApp()">Commander sur WhatsApp</button>
-            <button onclick="document.getElementById('modal').style.display='none'">Fermer</button>
+            <input type="text" id="client-name" placeholder="Votre Nom">
+            <input type="text" id="client-address" placeholder="Votre Adresse">
+            <button class="btn-order" onclick="sendToWhatsApp()">Commander sur WhatsApp</button>
+            <button onclick="toggleCart()">Fermer</button>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

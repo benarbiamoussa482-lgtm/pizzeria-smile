@@ -124,3 +124,26 @@ const menu = {
         { name: "Salade Smile", price: 600 }
     ]
 };
+function showCategory(cat) {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = `<h1 style="text-align:center; text-transform:uppercase; margin-bottom:30px;">${cat}</h1>`;
+            
+            menu[cat].forEach(item => {
+                let optionsHtml = "";
+                if (item.prices) {
+                    optionsHtml = `<select>${Object.keys(item.prices).map(s => `<option>${s}: ${item.prices[s]} DA</option>`).join('')}</select>`;
+                } else {
+                    optionsHtml = `<span class="price-tag">${item.price} DA</span>`;
+                }
+
+                container.innerHTML += `
+                    <div class="food-item">
+                        <span class="food-name">${item.name}</span>
+                        ${optionsHtml}
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+

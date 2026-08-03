@@ -1,75 +1,126 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Smile - Site Professionnel</title>
+    <title>Pizzeria Smile - Menu Pro</title>
     <style>
-        /* --- CSS الاحترافي --- */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
         
-        .navbar { display: flex; justify-content: space-between; padding: 20px; background: #fff; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .logo { font-size: 24px; font-weight: bold; color: #333; }
-        .cart-btn { background: #ffcc00; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
+        /* الهيدر */
+        .navbar { background: #fff; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); font-size: 1.5rem; font-weight: bold; }
         
-        .hero { text-align: center; padding: 50px 20px; background: #fff; }
-        .hero h1 { color: #1a1a1a; margin-bottom: 10px; }
-        
-        /* شبكة التصنيفات (المهمة جداً) */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        /* شبكة الأزرار */
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .cat-card { background: #fff; padding: 30px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 1.2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; border: 2px solid #ddd; }
+        .cat-card:hover { border-color: #ffcc00; background: #fff9e6; transform: scale(1.05); }
 
-        .cat-card {
-            background: #fff;
-            padding: 25px 10px;
-            border-radius: 20px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border: 2px solid #eee;
-            transition: 0.3s;
-            cursor: pointer;
+        /* حاوية الطعام (كبيرة وواضحة) */
+        #menu-container { padding: 20px; max-width: 800px; margin: 0 auto; }
+        
+        /* تصميم الصنف (الطلب) */
+        .food-item { 
+            background: white; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+            border-radius: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            border-left: 10px solid #ffcc00; /* لمسة جمالية */
         }
-
-        .cat-card:hover {
-            transform: translateY(-5px);
-            border-color: #ffcc00;
-            background: #fffdf0;
-        }
+        .food-name { font-size: 1.4rem; font-weight: bold; }
+        select { padding: 10px; font-size: 1.1rem; border-radius: 10px; border: 1px solid #ccc; }
+        .price-tag { font-size: 1.3rem; font-weight: bold; color: #333; }
     </style>
 </head>
 <body>
 
-    <!-- الهيكل (HTML) -->
-    <header class="navbar">
-        <div class="logo">PIZZERIA <b>SMILE</b></div>
-        <button class="cart-btn">🛒 0</button>
-    </header>
+    <div class="navbar">PIZZERIA <b>SMILE</b></div>
 
-    <div class="hero">
-        <h1>LE GOÛT QUI VOUS FAIT SOURIRE</h1>
-        <p>Pizzas, Burgers, Sandwichs et plus livrés chauds chez vous !</p>
-    </div>
-
-    <!-- شبكة التصنيفات (كاملة لا ينقصها شيء) -->
     <section class="category-grid">
-        <div class="cat-card">🍕 PIZZAS</div>
-        <div class="cat-card">🥪 SANDWICHS</div>
-        <div class="cat-card">🍔 BURGERS</div>
-        <div class="cat-card">🍲 GRATINÉS</div>
-        <div class="cat-card">🍟 POUTINES</div>
-        <div class="cat-card">🥗 SALADE</div>
+        <div class="cat-card" onclick="showCategory('pizzas')">🍕 PIZZAS</div>
+        <div class="cat-card" onclick="showCategory('sandwichs')">🥪 SANDWICHS</div>
+        <div class="cat-card" onclick="showCategory('tacos')">🌮 TACOS</div>
+        <div class="cat-card" onclick="showCategory('burger')">🍔 BURGERS</div>
+        <div class="cat-card" onclick="showCategory('gratinés')">🍲 GRATINÉS</div>
+        <div class="cat-card" onclick="showCategory('poutine')">🍟 POUTINES</div>
+        <div class="cat-card" onclick="showCategory('salade')">🥗 SALADE</div>
     </section>
 
-    <script>
-        // هنا يمكنك إضافة منطق JavaScript لاحقاً
-        console.log("الموقع يعمل بكامل التصنيفات");
-    </script>
-</body>
-</html>
+    <div id="menu-container">
+        <h2 style="text-align:center; color:#666; margin-top:50px;">اختر التصنيف لعرض القائمة</h2>
+    </div>
+
+    <script> 
+const menu = {
+    pizzas: [
+        { name: "Pizza Marguerite", prices: { M: 250, L: 500, XL: 1000 } },
+        { name: "Pizza Royale", prices: { M: 350, L: 700, XL: 1300 } },
+        { name: "Pizza Viande", prices: { M: 400, L: 800, XL: 1500 } },
+        { name: "Pizza Poulet", prices: { M: 450, L: 900, XL: 1800 } },
+        { name: "Pizza Sicilienne", prices: { M: 500, L: 1000, XL: 1900 } },
+        { name: "Pizza Végétarien", prices: { M: 500, L: 1000, XL: 1900 } },
+        { name: "Pizza Napolliaine", prices: { M: 550, L: 1100, XL: 2100 } },
+        { name: "Pizza Romaine", prices: { M: 600, L: 1200, XL: 2200 } },
+        { name: "Pizza Boisé", prices: { M: 650, L: 1300, XL: 2300 } },
+        { name: "Pizza 4 Saison", prices: { M: 700, L: 1400, XL: 2400 } },
+        { name: "Pizza 4 Fromage", prices: { M: 700, L: 1400, XL: 2400 } },
+        { name: "Pizza Compioné", prices: { M: 650, L: 1300, XL: 2400 } },
+        { name: "Pizza Chef", prices: { M: 700, L: 1400, XL: 2500 } },
+        { name: "Pizza Fumée", prices: { M: 700, L: 1400, XL: 2600 } },
+        { name: "Pizza Smile", prices: { M: 800, L: 1600, XL: 2600 } },
+        { name: "Pizza Couvert", prices: { M: 800, L: 1600 } },
+        { name: "Pizza Venesia", prices: { M: 900, L: 1800 } },
+        { name: "Pizza Capriccioza", prices: { M: 1000, L: 1900 } },
+        { name: "Pizza Crevette", prices: { M: 1000, L: 2000 } }
+    ],
+    sandwichs: [
+        { name: "Poulet hachée", price: 200 },
+        { name: "Spécial", price: 250 },
+        { name: "Spécial Doublé", price: 350 },
+        { name: "Chawarma", price: 350 },
+        { name: "Mariné", price: 350 },
+        { name: "Viande Haché", price: 350 },
+        { name: "Libané", price: 400 },
+        { name: "Kebda", price: 400 },
+        { name: "Escalope à la crème", price: 450 },
+        { name: "Mexicain", price: 450 },
+        { name: "Smile", price: 450 },
+        { name: "Crispy", price: 550 },
+        { name: "Chessy Chiken", price: 600 },
+        { name: "Mortadella", price: 650 },
+        { name: "Chiken & Crevette", price: 650 },
+        { name: "Chessy Smile", price: 650 }
+    ],
+    tacos: [
+        { name: "Tacos Poulet", prices: { M: 500, L: 650 } },
+        { name: "Tacos Chawarma", prices: { M: 500, L: 650 } },
+        { name: "Tacos Viande", prices: { M: 600, L: 750 } },
+        { name: "Tacos Mixte", prices: { M: 650, L: 800 } },
+        { name: "Tacos Crispé", prices: { M: 650, L: 800 } },
+        { name: "Gratiné", price: 100 }
+    ],
+    burger: [
+        { name: "Burger", price: 250 },
+        { name: "Cheese Burger", price: 350 },
+        { name: "Big Burger", price: 400 },
+        { name: "Crispy Burger", price: 450 },
+        { name: "Burger mixte", price: 550 }
+    ],
+    gratinés: [
+        { name: "Gratiné Poulet", price: 500 },
+        { name: "Gratiné Viande", price: 600 },
+        { name: "Gratiné Mixte", price: 650 }
+    ],
+    poutine: [
+        { name: "Poulet pané", price: 650 },
+        { name: "Mariné", price: 650 },
+        { name: "Mixte", price: 800 },
+        { name: "Chiken & Crevette", price: 800 }
+    ],
+    salade: [
+        { name: "Salade Smile", price: 600 }
+    ]
+};

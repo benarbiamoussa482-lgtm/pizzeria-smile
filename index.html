@@ -1,36 +1,75 @@
-<!-- الواجهة الرئيسية -->
-<div class="site-container">
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Smile - Site Professionnel</title>
+    <style>
+        /* --- CSS الاحترافي --- */
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; }
+        
+        .navbar { display: flex; justify-content: space-between; padding: 20px; background: #fff; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { font-size: 24px; font-weight: bold; color: #333; }
+        .cart-btn { background: #ffcc00; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; }
+        
+        .hero { text-align: center; padding: 50px 20px; background: #fff; }
+        .hero h1 { color: #1a1a1a; margin-bottom: 10px; }
+        
+        /* شبكة التصنيفات (المهمة جداً) */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cat-card {
+            background: #fff;
+            padding: 25px 10px;
+            border-radius: 20px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 2px solid #eee;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffcc00;
+            background: #fffdf0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيكل (HTML) -->
     <header class="navbar">
         <div class="logo">PIZZERIA <b>SMILE</b></div>
-        <nav>
-            <a href="#">ACCUEIL</a>
-            <a href="#">MENU</a>
-            <a href="#">PROMOTIONS</a>
-        </nav>
         <button class="cart-btn">🛒 0</button>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>LE GOÛT QUI VOUS FAIT <span>SOURIRE</span></h1>
-            <p>Pizzas, Burgers, Sandwichs et plus livrés chauds chez vous !</p>
-            <div class="hero-buttons">
-                <button class="btn-primary">COMMANDER</button>
-                <button class="btn-secondary">VOIR LE MENU</button>
-            </div>
-        </div>
-        <div class="hero-image">
-            <img src="pizza.png" alt="Delicious Pizza">
-        </div>
+    <div class="hero">
+        <h1>LE GOÛT QUI VOUS FAIT SOURIRE</h1>
+        <p>Pizzas, Burgers, Sandwichs et plus livrés chauds chez vous !</p>
+    </div>
+
+    <!-- شبكة التصنيفات (كاملة لا ينقصها شيء) -->
+    <section class="category-grid">
+        <div class="cat-card">🍕 PIZZAS</div>
+        <div class="cat-card">🥪 SANDWICHS</div>
+        <div class="cat-card">🍔 BURGERS</div>
+        <div class="cat-card">🍲 GRATINÉS</div>
+        <div class="cat-card">🍟 POUTINES</div>
+        <div class="cat-card">🥗 SALADE</div>
     </section>
 
-    <!-- منطقة التصنيفات (البطاقات) -->
-    <!-- منطقة التصنيفات (محدثة لتشمل كل القائمة) -->
-<section class="category-grid">
-    <div class="cat-card" onclick="renderCategory('Pizzas')">🍕 PIZZAS</div>
-    <div class="cat-card" onclick="renderCategory('Sandwichs')">🥪 SANDWICHS</div>
-    <div class="cat-card" onclick="renderCategory('Burger')">🍔 BURGERS</div>
-    <div class="cat-card" onclick="renderCategory('Gratinés')">🍲 GRATINÉS</div>
-    <div class="cat-card" onclick="renderCategory('Poutine')">🍟 POUTINES</div>
-    <div class="cat-card" onclick="renderCategory('Salade')">🥗 SALADE</div>
-</section>
+    <script>
+        // هنا يمكنك إضافة منطق JavaScript لاحقاً
+        console.log("الموقع يعمل بكامل التصنيفات");
+    </script>
+</body>
+</html>

@@ -1,58 +1,45 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Smile - Menu Pro</title>
+    <title>Pizzeria Smile - Menu</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-        
-        /* الهيدر */
-        .navbar { background: #fff; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); font-size: 1.5rem; font-weight: bold; }
-        
-        /* شبكة الأزرار */
-        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; max-width: 800px; margin: 0 auto; }
-        .cat-card { background: #fff; padding: 30px; border-radius: 20px; text-align: center; font-weight: bold; font-size: 1.2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); cursor: pointer; transition: 0.3s; border: 2px solid #ddd; }
-        .cat-card:hover { border-color: #ffcc00; background: #fff9e6; transform: scale(1.05); }
-
-        /* حاوية الطعام (كبيرة وواضحة) */
-        #menu-container { padding: 20px; max-width: 800px; margin: 0 auto; }
-        
-        /* تصميم الصنف (الطلب) */
-        .food-item { 
-            background: white; 
-            padding: 25px; 
-            margin-bottom: 20px; 
-            border-radius: 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-            border-left: 10px solid #ffcc00; /* لمسة جمالية */
-        }
-        .food-name { font-size: 1.4rem; font-weight: bold; }
-        select { padding: 10px; font-size: 1.1rem; border-radius: 10px; border: 1px solid #ccc; }
-        .price-tag { font-size: 1.3rem; font-weight: bold; color: #333; }
+        body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+        .navbar { background: #fff; padding: 20px; text-align: center; font-weight: bold; font-size: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; }
+        .cat-card { background: #fff; padding: 20px; text-align: center; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; }
+        .food-item { background: white; padding: 15px; margin: 10px; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; }
+        #cart-modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); color:white; padding:20px; overflow-y:auto; }
+        input { width: 90%; padding: 10px; margin: 5px; border-radius: 5px; border: none; }
+        button { padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background: #ffcc00; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="navbar">PIZZERIA <b>SMILE</b></div>
+    <div class="navbar">PIZZERIA SMILE</div>
+    <div style="text-align:center; padding:10px;"><button onclick="toggleCart()">🛒 السلة (<span id="cart-count">0</span>)</button></div>
 
-    <section class="category-grid">
-        <div class="cat-card" onclick="showCategory('pizzas')">🍕 PIZZAS</div>
-        <div class="cat-card" onclick="showCategory('sandwichs')">🥪 SANDWICHS</div>
-        <div class="cat-card" onclick="showCategory('tacos')">🌮 TACOS</div>
-        <div class="cat-card" onclick="showCategory('burger')">🍔 BURGERS</div>
-        <div class="cat-card" onclick="showCategory('gratinés')">🍲 GRATINÉS</div>
-        <div class="cat-card" onclick="showCategory('poutine')">🍟 POUTINES</div>
-        <div class="cat-card" onclick="showCategory('salade')">🥗 SALADE</div>
+    <section class="category-grid" id="cat-section">
+        <!-- الأزرار ستظهر هنا -->
     </section>
 
-    <div id="menu-container">
-        <h2 style="text-align:center; color:#666; margin-top:50px;">اختر التصنيف لعرض القائمة</h2>
+    <div id="menu-container"></div>
+
+    <!-- نافذة السلة -->
+    <div id="cart-modal">
+        <h2>قائمة طلباتك</h2>
+        <div id="cart-items"></div>
+        <h3>المجموع: <span id="cart-total">0</span> DA</h3>
+        <input type="text" id="client-name" placeholder="الاسم الكامل">
+        <input type="tel" id="client-phone" placeholder="رقم الهاتف">
+        <input type="text" id="client-address" placeholder="العنوان">
+        <br><br>
+        <button onclick="sendWhatsApp()">إرسال الطلب عبر واتساب</button>
+        <button onclick="toggleCart()">إغلاق</button>
     </div>
 
+       
     <script> 
 const menu = {
     pizzas: [
@@ -124,33 +111,55 @@ const menu = {
         { name: "Salade Smile", price: 600 }
     ]
 };
-function showCategory(cat) {
-            const container = document.getElementById('menu-container');
-            container.innerHTML = `<h1 style="text-align:center; text-transform:uppercase; margin-bottom:30px;">${cat}</h1>`;
-            
-            menu[cat].forEach(item => {
-                let optionsHtml = "";
-                if (item.prices) {
-                    optionsHtml = `<select>${Object.keys(item.prices).map(s => `<option>${s}: ${item.prices[s]} DA</option>`).join('')}</select>`;
-                } else {
-                    optionsHtml = `<span class="price-tag">${item.price} DA</span>`;
-                }
+ let cart = [];
 
-                container.innerHTML += `
-                    <div class="food-item">
-                        <span class="food-name">${item.name}</span>
-                        ${optionsHtml}
-                    </div>
-                `;
+        function init() {
+            const grid = document.getElementById('cat-section');
+            for(let cat in menu) {
+                grid.innerHTML += `<div class="cat-card" onclick="showCategory('${cat}')">${cat.toUpperCase()}</div>`;
+            }
+        }
+
+        function showCategory(cat) {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = `<h2 style="text-align:center;">${cat.toUpperCase()}</h2>`;
+            menu[cat].forEach(item => {
+                let priceHtml = item.prices ? `<select id="s-${item.name}">${Object.keys(item.prices).map(s => `<option value="${item.prices[s]}">${s}: ${item.prices[s]} DA</option>`).join('')}</select>` : `<span class="p-tag">${item.price} DA</span>`;
+                container.innerHTML += `<div class="food-item"><span>${item.name}</span> ${priceHtml} <button onclick="addToCart('${item.name}')">إضافة</button></div>`;
             });
         }
+
+        function addToCart(name) {
+            let price = 0;
+            const select = document.getElementById(`s-${name}`);
+            if(select) price = select.value;
+            else price = menu[Object.keys(menu).find(k => menu[k].find(i=>i.name==name))].find(i=>i.name==name).price;
+            cart.push({name, price});
+            document.getElementById('cart-count').innerText = cart.length;
+            alert("تمت الإضافة!");
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+            let itemsDiv = document.getElementById('cart-items');
+            itemsDiv.innerHTML = "";
+            let total = 0;
+            cart.forEach(i => {
+                itemsDiv.innerHTML += `<p>${i.name} - ${i.price} DA</p>`;
+                total += parseInt(i.price);
+            });
+            document.getElementById('cart-total').innerText = total;
+        }
+
+        function sendWhatsApp() {
+            let msg = `طلب: ${cart.map(i=>i.name).join(', ')} | الاسم: ${document.getElementById('client-name').value} | الهاتف: ${document.getElementById('client-phone').value} | العنوان: ${document.getElementById('client-address').value} | المجموع: ${document.getElementById('cart-total').innerText}`;
+            window.location.href = `https://wa.me/213000000000?text=${encodeURIComponent(msg)}`;
+        }
+
+        init();
     </script>
 </body>
-<!-- نموذج معلومات العميل (Big & Clear) -->
-<div class="contact-form" style="margin: 20px 0;">
-    <h3 style="text-align: center;">معلومات التوصيل</h3>
-    <input type="text" id="client-name" placeholder="الاسم الكامل" style="width: 100%; padding: 15px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ccc; font-size: 1.1rem;">
-    <input type="tel" id="client-phone" placeholder="رقم الهاتف" style="width: 100%; padding: 15px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ccc; font-size: 1.1rem;">
-    <input type="text" id="client-address" placeholder="العنوان" style="width: 100%; padding: 15px; margin-bottom: 10px; border-radius: 10px; border: 1px solid #ccc; font-size: 1.1rem;">
-</div>
+</html>
+
 

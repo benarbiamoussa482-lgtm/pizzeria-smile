@@ -94,4 +94,34 @@ function showMenu(category) {
     });
 }
 </script>
+function sendWhatsApp() {
+    // جلب البيانات من الخانات
+    const name = document.getElementById('client-name').value;
+    const phone = document.getElementById('client-phone').value;
+    const addr = document.getElementById('client-address').value;
+
+    // التأكد من ملء البيانات
+    if(name === "" || phone === "" || addr === "") {
+        alert("يرجى ملء الاسم، الهاتف، والعنوان أولاً!");
+        return;
+    }
+
+    // تجهيز تفاصيل الطلبات
+    let items = cart.map(i => i.name + " (" + i.price + ")").join(", ");
+    let total = document.getElementById('cart-total').innerText;
+
+    // صياغة الرسالة النهائية
+    let msg = `*طلب جديد من Pizzeria Smile*%0A%0A` +
+              `*الاسم:* ${name}%0A` +
+              `*الهاتف:* ${phone}%0A` +
+              `*العنوان:* ${addr}%0A%0A` +
+              `*الطلبات:* ${items}%0A` +
+              `*المجموع:* ${total}`;
+
+    // إرسال الرسالة (غير الرقم بالرقم الخاص بالمطعم)
+    window.location.href = `https://wa.me/213XXXXXXXXX?text=${msg}`;
+}
+
+
+
 

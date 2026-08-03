@@ -78,65 +78,20 @@ const menu = {
   ]
 };
 
-let cart = [];
-
-function render() {
-    const container = document.getElementById('menu-container');
-    container.innerHTML = "";
-    for (let cat in menu) {
-        container.innerHTML += `<h2>${cat.toUpperCase()}</h2>`;
-        menu[cat].forEach(item => {
-            let options = "";
-            if (item.prices) {
-                options = `<select id="size-${item.name.replace(/\s+/g, '-')}">${Object.keys(item.prices).map(s => `<option value="${s}">${s} (${item.prices[s]} DA)</option>`).join('')}</select>`;
-            }
-            container.innerHTML += `
-                <div class="card">
-                    <h3>${item.name}</h3>
-                    ${options}
-                    <button onclick="add('${item.name}')">إضافة</button>
-                </div>`;
-        });
-    }
-}
-
-function add(name) {
-    let item;
-    for(let cat in menu) {
-        item = menu[cat].find(i => i.name === name);
-        if(item) break;
-    }
+    // 2. دالة العرض (التي تظهر القائمة للزبون)
+function showMenu(category) {
+    const container = document.getElementById('menu-display');
+    const items = menuData[category];
     
-    let price = item.price;
-    let size = "";
-    if (item.prices) {
-        size = document.getElementById(`size-${name.replace(/\s+/g, '-')}`).value;
-        price = item.prices[size];
-    }
-    
-    cart.push({name, size, price});
-    document.getElementById('cart-count').innerText = cart.length;
-    alert(name + " تم الإضافة للسلة!");
+    // مسح المحتوى القديم وعرض الجديد
+    container.innerHTML = `<h2>${category}</h2>`;
+    items.forEach(item => {
+        container.innerHTML += `
+            <div style="padding:10px; border-bottom:1px solid #eee; display:flex; justify-content:space-between;">
+                <span>${item.name}</span>
+                <strong>${item.price}</strong>
+            </div>`;
+    });
 }
+</script>
 
-function toggleCart() {
-    const modal = document.getElementById('cart-modal');
-    modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
-    if(modal.style.display === 'block') {
-        let html = cart.map(i => `<p>${i.name} ${i.size ? '('+i.size+')' : ''} - ${i.price} DA</p>`).join('');
-        document.getElementById('cart-items').innerHTML = html || "السلة فارغة";
-        let total = cart.reduce((sum, i) => sum + i.price, 0);
-        document.getElementById('cart-total').innerText = "Total: " + total + " DA";
-    }
-}
-
-function sendWhatsApp() {
-    let name = document.getElementById('client-name').value;
-    let addr = document.getElementById('client-address').value;
-    let items = cart.map(i => i.name + (i.size ? " ("+i.size+")" : "")).join(', ');
-    let total = document.getElementById('cart-total').innerText;
-    let msg = `طلبي هو: ${items}. ${total}. الاسم: ${name}, العنوان: ${addr}`;
-    window.location.href = `https://wa.me/213779805210?text=${encodeURIComponent(msg)}`;
-}
-
-render();

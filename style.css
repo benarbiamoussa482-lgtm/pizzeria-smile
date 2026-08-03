@@ -1,20 +1,49 @@
-/* تصميم البطاقات - Modern Component Style */
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
+:root {
+    --primary-color: #ffcc00;
+    --dark-color: #1a1a1a;
+    --bg-color: #fdfdfd;
 }
 
-.item-card {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #f0f0f0;
+body { font-family: 'Poppins', sans-serif; background: var(--bg-color); margin: 0; }
+
+.navbar { display: flex; justify-content: space-between; padding: 20px 5%; align-items: center; }
+
+.hero-section { 
+    display: flex; 
+    align-items: center; 
+    padding: 50px 5%; 
+    background: #fff; 
 }
 
-.item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+.hero-content h1 { font-size: 3rem; color: var(--dark-color); }
+.hero-content h1 span { color: var(--primary-color); }
+
+/* تصميم البطاقات (كما في الصورة) */
+.category-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 20px; 
+    padding: 20px 5%; 
+}
+
+.cat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.cat-card:hover { transform: translateY(-10px); border: 2px solid var(--primary-color); }
+
+.btn-primary { 
+    background: var(--primary-color); 
+    padding: 15px 30px; 
+    border-radius: 50px; 
+    border: none; 
+    font-weight: bold; 
+    cursor: pointer; 
 }

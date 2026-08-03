@@ -1,49 +1,88 @@
+/* --- الإعدادات العامة (Global Styles) --- */
 :root {
-    --primary-color: #ffcc00;
-    --dark-color: #1a1a1a;
-    --bg-color: #fdfdfd;
+    --primary-yellow: #ffcc00;
+    --dark-grey: #1a1a1a;
+    --light-grey: #f8f9fa;
+    --white: #ffffff;
 }
 
-body { font-family: 'Poppins', sans-serif; background: var(--bg-color); margin: 0; }
-
-.navbar { display: flex; justify-content: space-between; padding: 20px 5%; align-items: center; }
-
-.hero-section { 
-    display: flex; 
-    align-items: center; 
-    padding: 50px 5%; 
-    background: #fff; 
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-grey);
+    margin: 0;
+    padding: 0;
+    color: var(--dark-grey);
 }
 
-.hero-content h1 { font-size: 3rem; color: var(--dark-color); }
-.hero-content h1 span { color: var(--primary-color); }
-
-/* تصميم البطاقات (كما في الصورة) */
-.category-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-    gap: 20px; 
-    padding: 20px 5%; 
+/* --- القائمة العلوية (Navbar) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    background: var(--white);
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.cat-card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+.logo { font-size: 22px; font-weight: 800; }
+.logo b { color: var(--primary-yellow); }
+
+.cart-btn {
+    background: var(--primary-yellow);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
     transition: 0.3s;
+}
+
+/* --- القسم الرئيسي (Hero Section) --- */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--white);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+/* --- شبكة الأصناف (Category Grid - القلب النابض للموقع) --- */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* عمودين للهواتف */
+    gap: 15px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- البطاقات (Cards) --- */
+.cat-card {
+    background: var(--white);
+    padding: 30px 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
-.cat-card:hover { transform: translateY(-10px); border: 2px solid var(--primary-color); }
+.cat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-yellow);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
-.btn-primary { 
-    background: var(--primary-color); 
-    padding: 15px 30px; 
-    border-radius: 50px; 
-    border: none; 
-    font-weight: bold; 
-    cursor: pointer; 
+/* --- تحسين للشاشات الأكبر (Responsive) --- */
+@media (min-width: 600px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 أعمدة للأجهزة اللوحية */
+    }
 }

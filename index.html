@@ -7,29 +7,363 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Pizzeria Smile - أفضل مطعم بيتزا، ساندويشات، تاكو، وبرغر. اطلب وجبتك الآن عبر الموقع واستلمها ساخنة. هاتف: 0779805210">
-    <meta name="keywords" content="Pizzeria Smile, بيتزا, تاكو, برغر, ساندويشات, مطعم بيتزا, طلبات بيتزا, توصيل سريع">
-    <meta name="author" content="Pizzeria Smile">
     
-    <!-- Open Graph (Facebook / WhatsApp Preview) -->
-    <meta property="og:title" content="Pizzeria Smile - Le Goût Qui Vous Fait Sourire">
-    <meta property="og:description" content="اكتشف القائمة الكاملة واطلب وجبتك المفضلة مباشرة عبر الواتساب!">
-    <meta property="og:type" content="website">
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary: #ffcc00;
+            --primary-dark: #e6b800;
+            --dark: #1e1e24;
+            --light: #f8f9fa;
+            --white: #ffffff;
+            --gray: #6c757d;
+            --danger: #dc3545;
+            --radius: 16px;
+            --shadow: 0 8px 20px rgba(0,0,0,0.06);
+        }
 
-    <!-- Schema.org for Google Search Indexing -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "Pizzeria Smile",
-      "description": "Pizzas, Burgers, Sandwichs et plus livrés chauds chez vous!",
-      "telephone": "+213779805210",
-      "priceRange": "$$",
-      "servesCuisine": ["Pizza", "Fast Food", "Sandwiches"]
-    }
-    </script>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <!-- ربط ملف الـ CSS -->
-    <link rel="stylesheet" href="style.css">
+        body {
+            background-color: #f4f5f7;
+            color: var(--dark);
+            padding-bottom: 100px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--white);
+            padding: 15px 25px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary-dark);
+            background: var(--primary);
+            padding: 2px 8px;
+            border-radius: 8px;
+            margin-right: 5px;
+        }
+
+        .cart-trigger {
+            background: var(--dark);
+            color: var(--white);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .cart-trigger span {
+            background: var(--primary);
+            color: var(--dark);
+            padding: 2px 8px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, #1e1e24 0%, #2b2b36 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Categories Nav */
+        .categories-wrapper {
+            padding: 0 15px;
+            max-width: 900px;
+            margin: 0 auto 25px auto;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .cat-card {
+            background: var(--white);
+            padding: 15px 10px;
+            border-radius: var(--radius);
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.2s;
+            user-select: none;
+        }
+
+        .cat-card:hover, .cat-card.active {
+            border-color: var(--primary);
+            background: #fffdf0;
+            transform: translateY(-2px);
+        }
+
+        /* Menu Container */
+        .menu-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-right: 10px;
+            border-right: 4px solid var(--primary);
+            text-transform: uppercase;
+        }
+
+        .food-card {
+            background: var(--white);
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            border-radius: var(--radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .food-info {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .food-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .food-action {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* تنسيق اختيار الحجم والكمية */
+        select.size-select, .qty-input {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            font-size: 0.95rem;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .qty-input {
+            width: 70px;
+            text-align: center;
+        }
+
+        .price-badge {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #2b2b36;
+            background: #fff8d6;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .add-btn {
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .add-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Modal / Cart Drawer */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 100%;
+            max-width: 600px;
+            max-height: 90vh;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+            padding: 25px;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .close-btn {
+            background: #eee;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .cart-item-info {
+            font-weight: 600;
+        }
+
+        .cart-item-price {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .remove-item {
+            color: var(--danger);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0 5px;
+        }
+
+        .form-group {
+            margin-top: 20px;
+        }
+
+        .form-group h4 {
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-dark);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .total-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body>
 
@@ -88,7 +422,8 @@
                 <h4>معلومات التوصيل 🚚</h4>
                 <input type="text" id="client-name" class="form-control" placeholder="الاسم الكامل *" required>
                 <input type="tel" id="client-phone" class="form-control" placeholder="رقم الهاتف *" required>
-                <input type="text" id="client-address" class="form-control" placeholder="العنوان الكامل والتفصيلي *" required>
+                <!-- تم تغيير حقل العنوان إلى textarea ليكون كبيراً ومريحاً للكتابة -->
+                <textarea id="client-address" class="form-control" placeholder="العنوان بالتفصيل (مثال: الحي، الشارع، رقم العمارة والطابق) *" required></textarea>
             </div>
 
             <button class="checkout-btn" onclick="sendOrderToWhatsApp()">
@@ -97,7 +432,259 @@
         </div>
     </div>
 
-    <!-- ربط ملف الـ JavaScript -->
-    <script src="script.js"></script>
+    <script>
+        // --- COMPLETE DATABASE ---
+        const menu = {
+            pizzas: [
+                { name: "Pizza Marguerite", prices: { M: 250, L: 500, XL: 1000 } },
+                { name: "Pizza Royale", prices: { M: 350, L: 700, XL: 1300 } },
+                { name: "Pizza Viande", prices: { M: 400, L: 800, XL: 1500 } },
+                { name: "Pizza Poulet", prices: { M: 450, L: 900, XL: 1800 } },
+                { name: "Pizza Sicilienne", prices: { M: 500, L: 1000, XL: 1900 } },
+                { name: "Pizza Végétarien", prices: { M: 500, L: 1000, XL: 1900 } },
+                { name: "Pizza Napolliaine", prices: { M: 550, L: 1100, XL: 2100 } },
+                { name: "Pizza Romaine", prices: { M: 600, L: 1200, XL: 2200 } },
+                { name: "Pizza Boisé", prices: { M: 650, L: 1300, XL: 2300 } },
+                { name: "Pizza 4 Saison", prices: { M: 700, L: 1400, XL: 2400 } },
+                { name: "Pizza 4 Fromage", prices: { M: 700, L: 1400, XL: 2400 } },
+                { name: "Pizza Compioné", prices: { M: 650, L: 1300, XL: 2400 } },
+                { name: "Pizza Chef", prices: { M: 700, L: 1400, XL: 2500 } },
+                { name: "Pizza Fumée", prices: { M: 700, L: 1400, XL: 2600 } },
+                { name: "Pizza Smile", prices: { M: 800, L: 1600, XL: 2600 } },
+                { name: "Pizza Couvert", prices: { M: 800, L: 1600 } },
+                { name: "Pizza Venesia", prices: { M: 900, L: 1800 } },
+                { name: "Pizza Capriccioza", prices: { M: 1000, L: 1900 } },
+                { name: "Pizza Crevette", prices: { M: 1000, L: 2000 } }
+            ],
+            sandwichs: [
+                { name: "Poulet hachée", price: 200 },
+                { name: "Spécial", price: 250 },
+                { name: "Spécial Doublé", price: 350 },
+                { name: "Chawarma", price: 350 },
+                { name: "Mariné", price: 350 },
+                { name: "Viande Haché", price: 350 },
+                { name: "Libané", price: 400 },
+                { name: "Kebda", price: 400 },
+                { name: "Escalope à la crème", price: 450 },
+                { name: "Mexicain", price: 450 },
+                { name: "Smile", price: 450 },
+                { name: "Crispy", price: 550 },
+                { name: "Chessy Chiken", price: 600 },
+                { name: "Mortadella", price: 650 },
+                { name: "Chiken & Crevette", price: 650 },
+                { name: "Chessy Smile", price: 650 }
+            ],
+            tacos: [
+                { name: "Tacos Poulet", prices: { M: 500, L: 650 } },
+                { name: "Tacos Chawarma", prices: { M: 500, L: 650 } },
+                { name: "Tacos Viande", prices: { M: 600, L: 750 } },
+                { name: "Tacos Mixte", prices: { M: 650, L: 800 } },
+                { name: "Tacos Crispé", prices: { M: 650, L: 800 } },
+                { name: "Gratiné", price: 100 }
+            ],
+            burger: [
+                { name: "Burger", price: 250 },
+                { name: "Cheese Burger", price: 350 },
+                { name: "Big Burger", price: 400 },
+                { name: "Crispy Burger", price: 450 },
+                { name: "Burger mixte", price: 550 }
+            ],
+            plats: [
+                { name: "Plat Spécial", price: 600 },
+                { name: "Plat Kabab", price: 600 },
+                { name: "Plat Mariné", price: 650 },
+                { name: "Plat Kebda", price: 700 },
+                { name: "Plat à la Crème", price: 700 },
+                { name: "Plat Cripé", price: 800 },
+                { name: "Plat Mélange", price: 2000 }
+            ],
+            gratinés: [
+                { name: "Gratiné Poulet", price: 500 },
+                { name: "Gratiné Viande", price: 600 },
+                { name: "Gratiné Mixte", price: 650 }
+            ],
+            poutine: [
+                { name: "Poulet pané", price: 650 },
+                { name: "Mariné", price: 650 },
+                { name: "Mixte", price: 800 },
+                { name: "Chiken & Crevette", price: 800 }
+            ],
+            salade: [
+                { name: "Salade Smile", price: 600 }
+            ]
+        };
+
+        let cart = [];
+        const whatsappNumber = "213779805210"; 
+
+        // --- RENDER MENU ---
+        function renderMenu(categoryFilter = 'all') {
+            const display = document.getElementById('menu-display');
+            display.innerHTML = '';
+
+            for (let cat in menu) {
+                if (categoryFilter !== 'all' && categoryFilter !== cat) continue;
+
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.className = 'section-title';
+                categoryTitle.innerText = cat.toUpperCase();
+                display.appendChild(categoryTitle);
+
+                menu[cat].forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'food-card';
+
+                    let actionHtml = '';
+                    if (item.prices) {
+                        let options = Object.keys(item.prices).map(size => `<option value="${size}">${size} - ${item.prices[size]} DA</option>`).join('');
+                        actionHtml = `
+                            <div class="food-action">
+                                <select class="size-select" id="select-${cat}-${index}">
+                                    ${options}
+                                </select>
+                                <input type="number" id="qty-${cat}-${index}" class="qty-input" value="1" min="1" title="الكمية">
+                                <button class="add-btn" onclick="addToCartWithOptions('${item.name}', '${cat}', ${index})">إضافة +</button>
+                            </div>
+                        `;
+                    } else {
+                        actionHtml = `
+                            <div class="food-action">
+                                <span class="price-badge">${item.price} DA</span>
+                                <input type="number" id="qty-${cat}-${index}" class="qty-input" value="1" min="1" title="الكمية">
+                                <button class="add-btn" onclick="addToCartSimple('${item.name}', ${item.price}, '${cat}', ${index})">إضافة +</button>
+                            </div>
+                        `;
+                    }
+
+                    card.innerHTML = `
+                        <div class="food-info">
+                            <div class="food-title">${item.name}</div>
+                        </div>
+                        ${actionHtml}
+                    `;
+                    display.appendChild(card);
+                });
+            }
+        }
+
+        // --- CART OPERATIONS (With Quantity Logic) ---
+        function addToCartSimple(name, price, cat, index) {
+            const qtyInput = document.getElementById(`qty-${cat}-${index}`);
+            const qty = parseInt(qtyInput.value) || 1;
+
+            const existingItem = cart.find(i => i.name === name);
+            if(existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ name, price: parseInt(price), qty: qty });
+            }
+            
+            qtyInput.value = 1; // إرجاع الكمية إلى 1 بعد الإضافة
+            updateCartUI();
+        }
+
+        function addToCartWithOptions(name, cat, index) {
+            const selectElement = document.getElementById(`select-${cat}-${index}`);
+            const selectedSize = selectElement.value;
+            const price = menu[cat][index].prices[selectedSize];
+            
+            const qtyInput = document.getElementById(`qty-${cat}-${index}`);
+            const qty = parseInt(qtyInput.value) || 1;
+
+            const fullName = `${name} (${selectedSize})`;
+            const existingItem = cart.find(i => i.name === fullName);
+
+            if(existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ name: fullName, price: parseInt(price), qty: qty });
+            }
+
+            qtyInput.value = 1; // إرجاع الكمية إلى 1 بعد الإضافة
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // حساب عدد المنتجات الإجمالي بناءً على الكميات
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+            
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:#888; padding:20px;">السلة فارغة حالياً</p>';
+                document.getElementById('cart-total-price').innerText = '0 DA';
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                total += itemTotal;
+                
+                const div = document.createElement('div');
+                div.className = 'cart-item';
+                div.innerHTML = `
+                    <div class="cart-item-info">
+                        <div>${item.name} <span style="color:var(--primary-dark); font-size:0.9rem;">(x${item.qty})</span></div>
+                        <div class="cart-item-price">${item.price} DA × ${item.qty} = <strong>${itemTotal} DA</strong></div>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${index})">🗑️</button>
+                `;
+                container.appendChild(div);
+            });
+
+            document.getElementById('cart-total-price').innerText = `${total} DA`;
+        }
+
+        function toggleCartModal() {
+            document.getElementById('cart-modal').classList.toggle('open');
+        }
+
+        function filterCategory(cat, element) {
+            document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+            element.classList.add('active');
+            renderMenu(cat);
+        }
+
+        // --- SEND TO WHATSAPP ---
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) {
+                alert('الرجاء إضافة بعض الأصناف إلى السلة أولاً!');
+                return;
+            }
+
+            const name = document.getElementById('client-name').value.trim();
+            const phone = document.getElementById('client-phone').value.trim();
+            const address = document.getElementById('client-address').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('الرجاء ملء كافة معلومات التوصيل (الاسم، الهاتف، العنوان)');
+                return;
+            }
+
+            let total = document.getElementById('cart-total-price').innerText;
+            // إضافة الكمية لكل طلب في رسالة الواتساب
+            let orderList = cart.map((item, i) => `${i + 1}. ${item.name} (الكمية: ${item.qty}) - ${item.price * item.qty} DA`).join('%0A');
+
+            let message = `*طلب جديد من موقع Pizzeria Smile* 🍕%0A%0A` +
+                          `*الزبون:* ${name}%0A` +
+                          `*الهاتف:* ${phone}%0A` +
+                          `*العنوان:* ${address}%0A%0A` +
+                          `*تفاصيل الطلبية:*%0A${orderList}%0A%0A` +
+                          `*المجموع الكلي:* ${total}`;
+
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+        }
+
+        // Initialize Page
+        renderMenu();
+    </script>
 </body>
 </html>

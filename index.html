@@ -154,7 +154,7 @@ const menu = {
 
         function sendWhatsApp() {
             let msg = `طلب: ${cart.map(i=>i.name).join(', ')} | الاسم: ${document.getElementById('client-name').value} | الهاتف: ${document.getElementById('client-phone').value} | العنوان: ${document.getElementById('client-address').value} | المجموع: ${document.getElementById('cart-total').innerText}`;
-            window.location.href = `https://wa.me/213000000000?text=${encodeURIComponent(msg)}`;
+            window.location.href = `https://wa.me/0779805210?text=${encodeURIComponent(msg)}`;
         }
 
         init();
